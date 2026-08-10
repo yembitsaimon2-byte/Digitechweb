@@ -1,0 +1,604 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DIGITECH WEB — DESIGN SYSTEM
+   Version: 1.0
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   THEME — Tailwind v4 CSS-first configuration
+   ------------------------------------------------------------ */
+@theme inline {
+  /* --- Couleurs --- */
+  --color-black:            #0A0A0A;
+  --color-surface:          #111111;
+  --color-surface-elevated: #161616;
+  --color-surface-high:     #1E1E1E;
+
+  --color-cream:            #F5F0EB;
+  --color-cream-dim:        #9A9590;
+  --color-cream-muted:      #5A5753;
+
+  --color-accent:           #C8F04A;
+  --color-accent-dim:       #A8D030;
+  --color-accent-dark:      #8AB020;
+
+  --color-border:           rgba(255, 255, 255, 0.07);
+  --color-border-strong:    rgba(255, 255, 255, 0.14);
+
+  --color-white:            #FFFFFF;
+  --color-transparent:      transparent;
+
+  /* --- Typographie --- */
+  --font-display: 'Syne', 'Inter', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  /* --- Fluid Type Scale --- */
+  --text-caption:  clamp(0.6875rem, 0.65rem + 0.2vw, 0.75rem);
+  --text-small:    clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-body:     clamp(0.9375rem, 0.875rem + 0.3vw, 1rem);
+  --text-body-lg:  clamp(1rem, 0.95rem + 0.35vw, 1.125rem);
+  --text-lead:     clamp(1.0625rem, 0.975rem + 0.5vw, 1.25rem);
+  --text-h3:       clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);
+  --text-h2:       clamp(1.75rem, 1.4rem + 1.75vw, 2.75rem);
+  --text-h1:       clamp(2.5rem, 1.8rem + 3.5vw, 5rem);
+  --text-display:  clamp(2rem, 1.2rem + 2.8vw, 3.8rem);
+  --text-giant:    clamp(2.5rem, 1.5rem + 3.5vw, 5rem);
+
+  /* --- Letter Spacing --- */
+  --tracking-tight:  -0.03em;
+  --tracking-normal: -0.01em;
+  --tracking-wide:   0.04em;
+  --tracking-wider:  0.08em;
+  --tracking-widest: 0.14em;
+
+  /* --- Line Heights --- */
+  --leading-tight:  1.05;
+  --leading-snug:   1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.7;
+
+  /* --- Spacing Scale --- */
+  --spacing-1:   0.25rem;
+  --spacing-2:   0.5rem;
+  --spacing-3:   0.75rem;
+  --spacing-4:   1rem;
+  --spacing-5:   1.25rem;
+  --spacing-6:   1.5rem;
+  --spacing-8:   2rem;
+  --spacing-10:  2.5rem;
+  --spacing-12:  3rem;
+  --spacing-16:  4rem;
+  --spacing-20:  5rem;
+  --spacing-24:  6rem;
+  --spacing-32:  8rem;
+  --spacing-40:  10rem;
+  --spacing-48:  12rem;
+  --spacing-64:  16rem;
+
+  /* --- Fluid Spacing (sections) --- */
+  --section-sm:  clamp(3rem, 2rem + 5vw, 6rem);
+  --section-md:  clamp(5rem, 3rem + 10vw, 10rem);
+  --section-lg:  clamp(8rem, 5rem + 15vw, 16rem);
+
+  /* --- Grid --- */
+  --grid-cols:   12;
+  --grid-gutter: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  --container:   min(90rem, 100% - 2 * var(--grid-gutter));
+
+  /* --- Border Radius --- */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   1rem;
+  --radius-xl:   2rem;
+  --radius-full: 9999px;
+
+  /* --- Z-Index --- */
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-overlay:  20;
+  --z-dropdown: 30;
+  --z-nav:      40;
+  --z-modal:    50;
+  --z-cursor:   100;
+
+  /* --- Transitions --- */
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo:    cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out:     cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-elastic:    cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --duration-fast:   150ms;
+  --duration-base:   300ms;
+  --duration-slow:   600ms;
+  --duration-slower: 1000ms;
+
+  /* --- Shadows --- */
+  --shadow-sm:   0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:   0 16px 48px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 40px rgba(200, 240, 74, 0.12);
+}
+
+/* ------------------------------------------------------------
+   RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  overflow-x: hidden;
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-cream-muted);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-black);
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Images */
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Lists */
+ul, ol {
+  list-style: none;
+}
+
+/* Button reset */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Input reset */
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ------------------------------------------------------------
+   TYPOGRAPHY — Base Classes
+   ------------------------------------------------------------ */
+
+/* Display — hero titles */
+.type-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Giant — CTA final */
+.type-giant {
+  font-family: var(--font-display);
+  font-size: var(--text-giant);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: var(--tracking-tight);
+}
+
+/* H1 */
+.type-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* H2 */
+.type-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* H3 */
+.type-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Body */
+.type-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: var(--leading-relaxed);
+}
+
+/* Body large */
+.type-body-lg {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  font-weight: 400;
+  line-height: var(--leading-relaxed);
+}
+
+/* Lead */
+.type-lead {
+  font-family: var(--font-body);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  line-height: var(--leading-relaxed);
+  color: var(--color-cream-dim);
+}
+
+/* Small */
+.type-small {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  color: var(--color-cream-dim);
+}
+
+/* Caption */
+.type-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-cream-muted);
+}
+
+/* Label accent */
+.type-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* ------------------------------------------------------------
+   LAYOUT — Container & Grid
+   ------------------------------------------------------------ */
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gutter);
+}
+
+/* Fallback mobile : .grid-12 passe en colonne unique */
+@media (max-width: 768px) {
+  .grid-12 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Section padding */
+.section-sm  { padding-block: var(--section-sm); }
+.section-md  { padding-block: var(--section-md); }
+.section-lg  { padding-block: var(--section-lg); }
+
+/* ------------------------------------------------------------
+   COMPONENTS — Buttons
+   ------------------------------------------------------------ */
+
+/* Primary button */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: var(--color-accent);
+  color: var(--color-black);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  transition: transform var(--duration-base) var(--ease-out-expo),
+              background-color var(--duration-base) var(--ease-smooth);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dim);
+  transform: scale(1.03);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* Ghost button */
+.btn-ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: transparent;
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  transition: border-color var(--duration-base) var(--ease-smooth),
+              color var(--duration-base) var(--ease-smooth),
+              transform var(--duration-base) var(--ease-out-expo);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-cream);
+  transform: scale(1.03);
+}
+
+.btn-ghost:active {
+  transform: scale(0.97);
+}
+
+/* Text link button */
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-cream);
+  font-size: var(--text-small);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+}
+
+.btn-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-base) var(--ease-out-expo);
+}
+
+.btn-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ------------------------------------------------------------
+   COMPONENTS — Lines & Dividers
+   ------------------------------------------------------------ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+/* ------------------------------------------------------------
+   ANIMATIONS — Base Classes
+   ------------------------------------------------------------ */
+
+/* Text reveal wrapper — clips overflow */
+.reveal-wrapper {
+  overflow: hidden;
+}
+
+/* Will-change hints */
+.will-transform {
+  will-change: transform;
+}
+.will-opacity {
+  will-change: opacity;
+}
+
+/* Cursor custom — hide system cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor-active {
+    cursor: none;
+  }
+  body.custom-cursor-active a,
+  body.custom-cursor-active button {
+    cursor: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-wrapper > * {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   UTILITIES
+   ------------------------------------------------------------ */
+
+/* Accent color text */
+.text-accent { color: var(--color-accent); }
+.text-cream   { color: var(--color-cream); }
+.text-dim     { color: var(--color-cream-dim); }
+.text-muted   { color: var(--color-cream-muted); }
+
+/* Backgrounds */
+.bg-black    { background-color: var(--color-black); }
+.bg-surface  { background-color: var(--color-surface); }
+
+/* Overflow */
+.clip { overflow: hidden; }
+
+/* Flex utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Absolute cover */
+.cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Visually hidden (accessible) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Noise texture overlay */
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+}
+
+/* ============================================================
+   RESPONSIVE SYSTEM — Breakpoints globaux
+   Mobile  : max-width: 768px
+   Tablette: max-width: 1024px
+   ============================================================ */
+
+/* --- Tablette (≤ 1024px) --- */
+@media (max-width: 1024px) {
+  /* Sections : padding vertical réduit */
+  .section-lg { padding-block: clamp(5rem, 10vw, 8rem); }
+  .section-md { padding-block: clamp(3rem, 7vw, 5rem); }
+  .section-sm { padding-block: clamp(2rem, 5vw, 3rem); }
+}
+
+/* --- Mobile (≤ 768px) --- */
+@media (max-width: 768px) {
+  /* Sections : padding encore réduit */
+  .section-lg { padding-block: 4rem; }
+  .section-md { padding-block: 3rem; }
+  .section-sm { padding-block: 2rem; }
+
+  /* Boutons : pleine largeur sur très petit écran */
+  .btn-primary,
+  .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
