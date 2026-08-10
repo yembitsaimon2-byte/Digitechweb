@@ -97,9 +97,10 @@ export default function IntroSection() {
           gap: 'var(--grid-gutter)',
           alignItems: 'start',
         }}
+        className="intro-grid"
       >
         {/* Titre gauche */}
-        <div style={{ gridColumn: 'span 5' }}>
+        <div style={{ gridColumn: 'span 5' }} className="intro-left">
           <h2
             ref={titleRef}
             className="type-h1"
@@ -119,6 +120,7 @@ export default function IntroSection() {
             gridColumn: '7 / span 6',
             paddingTop: 'clamp(0.5rem, 2vw, 2rem)',
           }}
+          className="intro-right"
         >
           <p
             ref={textRef}
@@ -148,13 +150,14 @@ export default function IntroSection() {
                   style={{
                     display: 'block',
                     fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                    fontSize: 'clamp(2.25rem, 8vw, 4.5rem)',
                     fontWeight: 700,
                     letterSpacing: 'var(--tracking-tight)',
                     color: i === WORDS.length - 1 ? 'var(--color-accent)' : 'var(--color-cream)',
                     opacity: 0,
                     paddingBottom: '0.1em',
                   }}
+                  className="intro-word"
                 >
                   {word}
                 </span>
@@ -163,6 +166,23 @@ export default function IntroSection() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .intro-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
+          .intro-left,
+          .intro-right {
+            grid-column: span 12 !important;
+            padding-top: 0 !important;
+          }
+          .intro-word {
+            font-size: clamp(2rem, 9vw, 3.25rem) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

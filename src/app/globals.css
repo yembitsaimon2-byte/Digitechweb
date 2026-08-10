@@ -589,6 +589,15 @@ input, textarea, select {
 
 /* --- Mobile (≤ 768px) --- */
 @media (max-width: 768px) {
+  /* Navbar responsive enforcement */
+  .desktop-nav,
+  .desktop-cta {
+    display: none !important;
+  }
+  .burger-btn {
+    display: flex !important;
+  }
+
   /* Sections : padding encore réduit */
   .section-lg { padding-block: 4rem; }
   .section-md { padding-block: 3rem; }
@@ -601,4 +610,5 @@ input, textarea, select {
     justify-content: center;
   }
 }
+
 

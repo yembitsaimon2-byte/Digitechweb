@@ -262,14 +262,14 @@ export default function Navbar() {
 
       {/* Styles desktop/mobile */}
       <style>{`
-        .desktop-nav { display: flex; }
-        .desktop-cta { display: inline-flex; }
-        .burger-btn  { display: none; }
+        .desktop-nav { display: flex !important; }
+        .desktop-cta { display: inline-flex !important; }
+        .burger-btn  { display: none !important; }
 
         @media (max-width: 768px) {
-          .desktop-nav { display: none; }
-          .desktop-cta { display: none; }
-          .burger-btn  { display: flex; }
+          .desktop-nav { display: none !important; }
+          .desktop-cta { display: none !important; }
+          .burger-btn  { display: flex !important; }
         }
 
         .nav-link:hover {
