@@ -95,15 +95,26 @@ export default function ContactPage() {
 
     setStatus('loading');
 
-    // Simulation — remplacer par un vrai appel API
-    await new Promise((r) => setTimeout(r, 1500));
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
 
-    // En production : POST vers /api/contact
-    // const res = await fetch('/api/contact', { method: 'POST', body: JSON.stringify(form) });
-    // if (!res.ok) { setStatus('error'); return; }
+      const data = await res.json();
 
-    setStatus('success');
-    setForm(EMPTY_FORM);
+      if (!res.ok || !data.success) {
+        setStatus('error');
+        return;
+      }
+
+      setStatus('success');
+      setForm(EMPTY_FORM);
+    } catch (err) {
+      console.error('Erreur d’envoi formulaire:', err);
+      setStatus('error');
+    }
   };
 
   return (
