@@ -8,8 +8,8 @@ const getResendClient = () => {
   return new Resend(apiKey);
 };
 
-// Adresse de destination officielle
-const RECIPIENT_EMAIL = process.env.CONTACT_RECIPIENT_EMAIL || 'digitechweb98@gmail.com';
+// Adresse de destination officielle (par défaut l'email lié au compte Resend gratuit)
+const RECIPIENT_EMAIL = process.env.CONTACT_RECIPIENT_EMAIL || 'yembitsaimon2@gmail.com';
 
 export async function POST(request: Request) {
   try {
