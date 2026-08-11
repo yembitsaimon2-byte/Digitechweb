@@ -23,40 +23,83 @@ export default function MethodSection() {
     }
 
     const ctx = gsap.context(() => {
-      // Heading
-      gsap.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          ease: 'power4.out',
-          scrollTrigger: { trigger: headingRef.current, start: 'top 80%' },
-        }
-      );
+      const mm = gsap.matchMedia();
 
-      // Line progress
-      if (lineRef.current) {
+      // DESKTOP (Inchangé à 100%)
+      mm.add('(min-width: 769px)', () => {
         gsap.fromTo(
-          lineRef.current,
-          { scaleY: 0, transformOrigin: 'top center' },
+          headingRef.current,
+          { opacity: 0, y: 40 },
           {
-            scaleY: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 60%',
-              end: 'bottom 60%',
-              scrub: 1,
-              onUpdate: (self) => {
-                const step = Math.floor(self.progress * METHOD_STEPS.length);
-                setActiveStep(Math.min(step, METHOD_STEPS.length - 1));
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power4.out',
+            scrollTrigger: { trigger: headingRef.current, start: 'top 80%' },
+          }
+        );
+
+        if (lineRef.current) {
+          gsap.fromTo(
+            lineRef.current,
+            { scaleY: 0, transformOrigin: 'top center' },
+            {
+              scaleY: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 60%',
+                end: 'bottom 60%',
+                scrub: 1,
+                onUpdate: (self) => {
+                  const step = Math.floor(self.progress * METHOD_STEPS.length);
+                  setActiveStep(Math.min(step, METHOD_STEPS.length - 1));
+                },
               },
+            }
+          );
+        }
+      });
+
+      // MOBILE (Déclenchement robuste + Fallback de visibilité)
+      mm.add('(max-width: 768px)', () => {
+        gsap.fromTo(
+          headingRef.current,
+          { opacity: 0, y: 25 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: headingRef.current,
+              start: 'top 90%',
+              toggleActions: 'play none none none',
             },
           }
         );
-      }
+
+        if (lineRef.current) {
+          gsap.fromTo(
+            lineRef.current,
+            { scaleY: 0, transformOrigin: 'top center' },
+            {
+              scaleY: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 75%',
+                end: 'bottom 75%',
+                scrub: 0.5,
+                onUpdate: (self) => {
+                  const step = Math.floor(self.progress * METHOD_STEPS.length);
+                  setActiveStep(Math.min(step, METHOD_STEPS.length - 1));
+                },
+              },
+            }
+          );
+        }
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -168,17 +211,42 @@ function MethodStep({ step, index, isActive }: MethodStepProps) {
     if (prefersReduced) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        stepRef.current,
-        { opacity: 0, x: -20 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: stepRef.current, start: 'top 85%' },
-        }
-      );
+      const mm = gsap.matchMedia();
+
+      // DESKTOP (100% inchangé)
+      mm.add('(min-width: 769px)', () => {
+        gsap.fromTo(
+          stepRef.current,
+          { opacity: 0, x: -20 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: stepRef.current, start: 'top 85%' },
+          }
+        );
+      });
+
+      // MOBILE (Déclenchement 01 -> 04 garanti avec fallback)
+      mm.add('(max-width: 768px)', () => {
+        gsap.fromTo(
+          stepRef.current,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: index * 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: stepRef.current,
+              start: 'top 92%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      });
     }, stepRef);
 
     return () => ctx.revert();

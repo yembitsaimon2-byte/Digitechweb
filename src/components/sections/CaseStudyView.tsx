@@ -37,60 +37,108 @@ export default function CaseStudyView({ project }: CaseStudyViewProps) {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
 
-    const isDesktop = window.matchMedia('(min-width: 769px)').matches;
-    if (!isDesktop) return;
-
     const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
       const mediaItems = gsap.utils.toArray<HTMLElement>('.cs-media-item');
 
-      // Création d'une timeline ScrollTrigger sticky pour faire défiler 1 seul média à la fois dans le même cadre
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: stickySectionRef.current,
-          start: 'top top',
-          end: `+=${totalMedia * 100}%`,
-          pin: true,
-          scrub: 0.6,
-          onUpdate: (self) => {
-            const idx = Math.min(
-              Math.floor(self.progress * totalMedia),
-              totalMedia - 1
-            );
-            setActiveIndex(idx);
+      // DESKTOP (Inchangé à 100%)
+      mm.add('(min-width: 769px)', () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: stickySectionRef.current,
+            start: 'top top',
+            end: `+=${totalMedia * 100}%`,
+            pin: true,
+            scrub: 0.6,
+            onUpdate: (self) => {
+              const idx = Math.min(
+                Math.floor(self.progress * totalMedia),
+                totalMedia - 1
+              );
+              setActiveIndex(idx);
+            },
           },
-        },
+        });
+
+        mediaItems.forEach((item, i) => {
+          if (i === 0) {
+            gsap.set(item, { opacity: 1, scale: 1, y: '0%' });
+          } else {
+            gsap.set(item, { opacity: 0, scale: 0.96, y: '3%' });
+
+            tl.to(
+              mediaItems[i - 1],
+              {
+                opacity: 0,
+                scale: 0.97,
+                y: '-2%',
+                duration: 1,
+                ease: 'power2.inOut',
+              },
+              i - 0.2
+            ).to(
+              item,
+              {
+                opacity: 1,
+                scale: 1,
+                y: '0%',
+                duration: 1,
+                ease: 'power2.inOut',
+              },
+              i - 0.2
+            );
+          }
+        });
       });
 
-      // Animer la transition entre les médias au scroll dans le conteneur unique
-      mediaItems.forEach((item, i) => {
-        if (i === 0) {
-          gsap.set(item, { opacity: 1, scale: 1, y: '0%' });
-        } else {
-          gsap.set(item, { opacity: 0, scale: 0.96, y: '3%' });
+      // MOBILE (Sticky adapté au geste tactile — 1 média à la fois)
+      mm.add('(max-width: 768px)', () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: stickySectionRef.current,
+            start: 'top top+=60px',
+            end: `+=${totalMedia * 65}%`,
+            pin: true,
+            scrub: 0.4,
+            onUpdate: (self) => {
+              const idx = Math.min(
+                Math.floor(self.progress * totalMedia),
+                totalMedia - 1
+              );
+              setActiveIndex(idx);
+            },
+          },
+        });
 
-          // Transition d'entrée de l'image suivante
-          tl.to(
-            mediaItems[i - 1],
-            {
-              opacity: 0,
-              scale: 0.97,
-              y: '-2%',
-              duration: 1,
-              ease: 'power2.inOut',
-            },
-            i - 0.2
-          ).to(
-            item,
-            {
-              opacity: 1,
-              scale: 1,
-              y: '0%',
-              duration: 1,
-              ease: 'power2.inOut',
-            },
-            i - 0.2
-          );
-        }
+        mediaItems.forEach((item, i) => {
+          if (i === 0) {
+            gsap.set(item, { opacity: 1, scale: 1, y: '0%' });
+          } else {
+            gsap.set(item, { opacity: 0, scale: 0.98, y: '2%' });
+
+            tl.to(
+              mediaItems[i - 1],
+              {
+                opacity: 0,
+                scale: 0.98,
+                y: '-1%',
+                duration: 1,
+                ease: 'power1.inOut',
+              },
+              i - 0.15
+            ).to(
+              item,
+              {
+                opacity: 1,
+                scale: 1,
+                y: '0%',
+                duration: 1,
+                ease: 'power1.inOut',
+              },
+              i - 0.15
+            );
+          }
+        });
       });
     }, containerRef);
 

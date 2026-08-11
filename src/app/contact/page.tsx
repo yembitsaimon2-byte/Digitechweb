@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import type { Metadata } from 'next';
 import { gsap } from '@/lib/gsap';
 import { CONTACT } from '@/lib/data';
+import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
 
@@ -29,11 +30,12 @@ const TYPES_PROJET = [
 ];
 
 const BUDGETS = [
-  'Moins de 5 000 €',
-  '5 000 € — 15 000 €',
+  'Moins de 1 500 €',
+  '1 500 € — 3 000 €',
+  '3 000 € — 7 500 €',
+  '7 500 € — 15 000 €',
   '15 000 € — 30 000 €',
-  '30 000 € — 60 000 €',
-  'Plus de 60 000 €',
+  'Plus de 30 000 €',
   'À définir',
 ];
 
@@ -158,27 +160,19 @@ export default function ContactPage() {
           paddingInline: 'var(--grid-gutter)',
         }}
       >
-        <div
-          style={{
-            maxWidth: 'var(--container)',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(12, 1fr)',
-            gap: 'var(--grid-gutter)',
-          }}
-        >
+        <div className="contact-grid">
           {/* Infos latérales */}
-          <div style={{ gridColumn: 'span 4' }}>
-            <div style={{ position: 'sticky', top: '8rem' }}>
-              <h2 className="type-h3" style={{ color: 'var(--color-cream)', marginBottom: '2rem' }}>
+          <div className="contact-info-col">
+            <div className="contact-sticky-info">
+              <h2 className="type-h3" style={{ color: 'var(--color-cream)', marginBottom: '1.5rem' }}>
                 Digitech Web
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 <div>
                   <p className="type-caption" style={{ marginBottom: '0.25rem' }}>E-mail</p>
                   <a
                     href={`mailto:${CONTACT.email}`}
-                    style={{ color: 'var(--color-cream-dim)', fontSize: 'var(--text-body)', textDecoration: 'none', transition: 'color 0.25s' }}
+                    style={{ color: 'var(--color-cream-dim)', fontSize: 'var(--text-body)', textDecoration: 'none', transition: 'color 0.25s', wordBreak: 'break-word' }}
                     className="contact-link"
                   >
                     {CONTACT.email}
@@ -214,11 +208,10 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-            <style>{`.contact-link:hover { color: var(--color-cream) !important; }`}</style>
           </div>
 
           {/* Formulaire principal */}
-          <div style={{ gridColumn: '6 / span 7' }}>
+          <div className="contact-form-col">
             {status === 'success' ? (
               <div
                 style={{
@@ -269,7 +262,7 @@ export default function ContactPage() {
               >
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                   {/* Ligne 1 : Nom + Entreprise */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="form-row-two-cols">
                     <Field
                       id="contact-nom"
                       name="nom"
@@ -292,7 +285,7 @@ export default function ContactPage() {
                   </div>
 
                   {/* Ligne 2 : Email + Téléphone */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="form-row-two-cols">
                     <Field
                       id="contact-email"
                       name="email"
@@ -315,7 +308,7 @@ export default function ContactPage() {
                   </div>
 
                   {/* Ligne 3 : Type de projet + Budget */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="form-row-two-cols">
                     <SelectField
                       id="contact-type-projet"
                       name="typeProjet"
@@ -404,6 +397,59 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Bouton WhatsApp Flottant */}
+      <WhatsAppButton />
+
+      {/* Styles responsive isolés pour la page Contact (Desktop 100% inchangé) */}
+      <style>{`
+        .contact-grid {
+          max-width: var(--container);
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: var(--grid-gutter);
+        }
+        .contact-info-col {
+          grid-column: span 4;
+        }
+        .contact-sticky-info {
+          position: sticky;
+          top: 8rem;
+        }
+        .contact-form-col {
+          grid-column: 6 / span 7;
+        }
+        .form-row-two-cols {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+        .contact-link:hover {
+          color: var(--color-cream) !important;
+        }
+
+        /* Responsive Mobile & Tablette (≤768px) */
+        @media (max-width: 768px) {
+          .contact-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 2.5rem !important;
+          }
+          .contact-info-col,
+          .contact-form-col {
+            grid-column: span 12 !important;
+            width: 100% !important;
+          }
+          .contact-sticky-info {
+            position: static !important;
+          }
+          .form-row-two-cols {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+        }
+      `}</style>
     </>
   );
 }
