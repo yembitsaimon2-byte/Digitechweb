@@ -139,6 +139,11 @@ export const PROJECTS: Project[] = [
       'Un site vitrine élégant pour un restaurant japonais, pensé pour donner envie et faciliter la réservation en ligne.',
     slug: 'sushi-sensation',
     video: '/videos/sushi-sensation.mp4',
+    images: [
+      'https://i.ibb.co/Cp2x9vkX/SUSHI-SENSATION1.png',
+      'https://i.ibb.co/hx56QM6n/SUSHI-SENSATION2.png',
+      'https://i.ibb.co/PsYGDhkC/SUSHI-SENSATION3.png',
+    ],
   },
   {
     id: 'project-02',
@@ -149,6 +154,13 @@ export const PROJECTS: Project[] = [
       'Une marketplace intuitive qui connecte vendeurs et acheteurs, avec une expérience fluide de la découverte au paiement.',
     slug: 'mbolo-samba',
     video: '/videos/mbolo-samba.mp4',
+    images: [
+      'https://i.ibb.co/RTsxxXvL/MBOLO-SAMBA-1.jpg',
+      'https://i.ibb.co/MkSNgg5b/MBOLO-SAMBA-2.jpg',
+      'https://i.ibb.co/DB9hcTp/MBOLO-SAMBA-3.jpg',
+      'https://i.ibb.co/gbCYn4Yk/MBOLO-SAMBA-4.jpg',
+      'https://i.ibb.co/nNYnLrxJ/MBOLO-SAMBA-5.jpg',
+    ],
   },
   {
     id: 'project-03',
@@ -159,9 +171,11 @@ export const PROJECTS: Project[] = [
       'Un logiciel de gestion sur mesure pour agences automobiles, du suivi de stock à la relation client.',
     slug: 'digiautocars',
     images: [
-      '/images/digiautocars.jpg',
-      '/images/digiautocars2.jpg',
-      '/images/digiautocars3.jpg',
+      'https://i.ibb.co/DHsMXWF5/Digiauto1.png',
+      'https://i.ibb.co/RGK2FNh7/Digiauto2.png',
+      'https://i.ibb.co/dsxwhHn1/Digiauto3.png',
+      'https://i.ibb.co/SXb8KzmB/Digiauto4.png',
+      'https://i.ibb.co/HDjDDtMj/Digiauto5.png',
     ],
   },
 ];

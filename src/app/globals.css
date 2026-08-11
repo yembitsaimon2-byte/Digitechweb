@@ -39,12 +39,12 @@
   --text-small:    clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-body:     clamp(0.9375rem, 0.875rem + 0.3vw, 1rem);
   --text-body-lg:  clamp(1rem, 0.95rem + 0.35vw, 1.125rem);
-  --text-lead:     clamp(1.0625rem, 0.975rem + 0.5vw, 1.25rem);
-  --text-h3:       clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);
-  --text-h2:       clamp(1.75rem, 1.4rem + 1.75vw, 2.75rem);
-  --text-h1:       clamp(2.5rem, 1.8rem + 3.5vw, 5rem);
-  --text-display:  clamp(2rem, 1.2rem + 2.8vw, 3.8rem);
-  --text-giant:    clamp(2.5rem, 1.5rem + 3.5vw, 5rem);
+  --text-lead:     clamp(1rem, 0.925rem + 0.4vw, 1.25rem);
+  --text-h3:       clamp(1.125rem, 1.05rem + 0.6vw, 1.625rem);
+  --text-h2:       clamp(1.5rem, 1.25rem + 1.25vw, 2.5rem);
+  --text-h1:       clamp(2rem, 1.5rem + 2.5vw, 4.25rem);
+  --text-display:  clamp(1.85rem, 1.2rem + 2.4vw, 3.5rem);
+  --text-giant:    clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
 
   /* --- Letter Spacing --- */
   --tracking-tight:  -0.03em;
@@ -598,17 +598,24 @@ input, textarea, select {
     display: flex !important;
   }
 
-  /* Sections : padding encore réduit */
-  .section-lg { padding-block: 4rem; }
-  .section-md { padding-block: 3rem; }
-  .section-sm { padding-block: 2rem; }
+  /* Sections : padding encore réduit pour mobile */
+  .section-lg { padding-block: 3.5rem; }
+  .section-md { padding-block: 2.5rem; }
+  .section-sm { padding-block: 1.75rem; }
 
-  /* Boutons : pleine largeur sur très petit écran */
+  /* Touch targets : hauteur confortable au doigt mais compacte visuellement */
   .btn-primary,
+  .btn-secondary,
   .btn-ghost {
-    width: 100%;
-    justify-content: center;
+    min-height: 48px;
+    padding-inline: 1.25rem;
+  }
+
+  /* Grilles 1 colonne sécurisées */
+  .grid-12 {
+    grid-template-columns: 1fr !important;
   }
 }
+
 
 
