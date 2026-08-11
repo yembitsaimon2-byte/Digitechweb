@@ -1,35 +1,37 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import type { CursorState } from '@/types';
 
 /**
- * Hook curseur personnalisé.
- * Fournit position et état du curseur.
+ * Hook curseur personnalisé hautement optimisé.
+ * Pas de re-render React au déplacement de la souris.
  */
 export function useCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const posRef = useRef({ x: -100, y: -100 });
   const [state, setState] = useState<CursorState>('default');
   const [isVisible, setIsVisible] = useState(false);
-
-  const updatePosition = useCallback((e: MouseEvent) => {
-    setPosition({ x: e.clientX, y: e.clientY });
-  }, []);
 
   const updateState = useCallback((newState: CursorState) => {
     setState(newState);
   }, []);
 
   useEffect(() => {
-    // Uniquement sur desktop (pointer fine = souris)
     const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!isDesktop) return;
 
-    document.addEventListener('mousemove', updatePosition, { passive: true });
-    document.addEventListener('mouseenter', () => setIsVisible(true));
-    document.addEventListener('mouseleave', () => setIsVisible(false));
+    const handleMouseMove = (e: MouseEvent) => {
+      posRef.current.x = e.clientX;
+      posRef.current.y = e.clientY;
+    };
 
-    // Délégation d'événements pour changer l'état du curseur
+    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => setIsVisible(false);
+
+    document.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseenter', handleMouseEnter);
+    document.addEventListener('mouseleave', handleMouseLeave);
+
     const handleOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (target.closest('[data-cursor="project"]')) setState('project');
@@ -42,10 +44,13 @@ export function useCursor() {
     document.addEventListener('mouseover', handleOver, { passive: true });
 
     return () => {
-      document.removeEventListener('mousemove', updatePosition);
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseenter', handleMouseEnter);
+      document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseover', handleOver);
     };
-  }, [updatePosition]);
+  }, []);
 
-  return { position, state, isVisible, updateState };
+  return { posRef, state, isVisible, updateState };
 }
+

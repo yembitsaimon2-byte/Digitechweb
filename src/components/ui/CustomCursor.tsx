@@ -5,33 +5,40 @@ import { useCursor } from '@/hooks/useCursor';
 import { gsap } from '@/lib/gsap';
 
 /**
- * Curseur personnalisé desktop.
- * Deux éléments : point central (rapide) + cercle (inertie).
+ * Curseur personnalisé desktop ultra-optimisé.
+ * Utilise GSAP quickTo / ticker direct (0 re-render React au déplacement).
  * Désactivé sur mobile (pointer: coarse).
  */
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const { position, state, isVisible } = useCursor();
+  const { posRef, state, isVisible } = useCursor();
 
-  // Animate dot — suit immédiatement
+  // Initialisation des animateurs GSAP rapides
   useEffect(() => {
-    if (!dotRef.current) return;
-    gsap.set(dotRef.current, { x: position.x, y: position.y });
-  }, [position]);
+    if (!dotRef.current || !ringRef.current) return;
 
-  // Animate ring — suit avec inertie
-  useEffect(() => {
-    if (!ringRef.current) return;
-    gsap.to(ringRef.current, {
-      x: position.x,
-      y: position.y,
-      duration: 0.5,
-      ease: 'power3.out',
-    });
-  }, [position]);
+    const setDotX = gsap.quickSetter(dotRef.current, 'x', 'px');
+    const setDotY = gsap.quickSetter(dotRef.current, 'y', 'px');
 
-  // Activate body class for hiding system cursor
+    const quickRingX = gsap.quickTo(ringRef.current, 'x', { duration: 0.35, ease: 'power3.out' });
+    const quickRingY = gsap.quickTo(ringRef.current, 'y', { duration: 0.35, ease: 'power3.out' });
+
+    const updateCursorPosition = () => {
+      setDotX(posRef.current.x);
+      setDotY(posRef.current.y);
+      quickRingX(posRef.current.x);
+      quickRingY(posRef.current.y);
+    };
+
+    gsap.ticker.add(updateCursorPosition);
+
+    return () => {
+      gsap.ticker.remove(updateCursorPosition);
+    };
+  }, [posRef]);
+
+  // Active la classe body pour masquer le curseur système
   useEffect(() => {
     const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!isDesktop) return;
@@ -39,7 +46,7 @@ export default function CustomCursor() {
     return () => document.body.classList.remove('custom-cursor-active');
   }, []);
 
-  // State-based ring size/style
+  // Style selon l'état (hover)
   const ringScale = {
     default: 1,
     link: 1.6,
@@ -97,3 +104,4 @@ export default function CustomCursor() {
     </>
   );
 }
+

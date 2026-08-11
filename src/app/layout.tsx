@@ -12,14 +12,14 @@ import CustomCursor from '@/components/ui/CustomCursor';
    ============================================================ */
 const syne = Syne({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['600', '700'],
   variable: '--font-syne',
   display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
 });

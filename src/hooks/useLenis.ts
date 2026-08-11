@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import Lenis from 'lenis';
+import { gsap } from '@/lib/gsap';
 
 let lenisInstance: Lenis | null = null;
 
@@ -11,15 +12,12 @@ export function getLenis(): Lenis | null {
 
 /**
  * Hook Lenis smooth scroll.
- * À utiliser dans le root layout (une seule instance).
+ * Une seule boucle RAF synchronisée avec GSAP.
  */
 export function useLenis() {
-  const rafRef = useRef<number>(0);
-
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Respect prefers-reduced-motion
     const prefersReduced = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
@@ -32,17 +30,19 @@ export function useLenis() {
       touchMultiplier: 2,
     });
 
-    function raf(time: number) {
-      lenisInstance?.raf(time);
-      rafRef.current = requestAnimationFrame(raf);
-    }
+    // Synchronisation de Lenis avec la boucle ticker de GSAP
+    const updateLenis = (time: number) => {
+      lenisInstance?.raf(time * 1000);
+    };
 
-    rafRef.current = requestAnimationFrame(raf);
+    gsap.ticker.add(updateLenis);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(rafRef.current);
+      gsap.ticker.remove(updateLenis);
       lenisInstance?.destroy();
       lenisInstance = null;
     };
   }, []);
 }
+

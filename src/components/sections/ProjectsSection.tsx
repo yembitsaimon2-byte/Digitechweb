@@ -282,6 +282,28 @@ export function ProjectVisual({ number, project }: { number?: string; project?: 
   const images: string[] = project?.images || [];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoEl.play().catch(() => {});
+          } else {
+            videoEl.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(videoEl);
+    return () => observer.disconnect();
+  }, [video]);
 
   useEffect(() => {
     if (video || images.length <= 1) return;
@@ -308,11 +330,13 @@ export function ProjectVisual({ number, project }: { number?: string; project?: 
         }}
       >
         <video
+          ref={videoRef}
           src={video}
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
           style={{
             width: '100%',
             height: '100%',

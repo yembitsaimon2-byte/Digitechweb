@@ -3,9 +3,8 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * HeroCanvas — Champ de particules Three.js très léger.
- * Import manuel Three.js (sans R3F) pour garder le contrôle total.
- * Mouvement lié à la souris, performance optimisée.
+ * HeroCanvas — Champ de particules Three.js ultra-optimisé.
+ * Mise en pause automatique de la boucle GPU quand hors écran.
  */
 export default function HeroCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -22,16 +21,20 @@ export default function HeroCanvas() {
     let scene: import('three').Scene;
     let camera: import('three').PerspectiveCamera;
     let particles: import('three').Points;
+    let geometry: import('three').BufferGeometry;
+    let material: import('three').PointsMaterial;
+    let isVisible = true;
     let mouseX = 0;
     let mouseY = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (!isVisible) return;
       mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
       mouseY = -(e.clientY / window.innerHeight - 0.5) * 2;
     };
 
     const handleResize = () => {
-      if (!renderer || !camera) return;
+      if (!renderer || !camera || !canvas) return;
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       renderer.setSize(w, h);
@@ -50,6 +53,7 @@ export default function HeroCanvas() {
         canvas: canvas!,
         alpha: true,
         antialias: false,
+        powerPreference: 'high-performance',
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.setSize(w, h);
@@ -76,11 +80,11 @@ export default function HeroCanvas() {
         sizes[i] = Math.random() * 2 + 0.5;
       }
 
-      const geometry = new THREE.BufferGeometry();
+      geometry = new THREE.BufferGeometry();
       geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
       geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
-      const material = new THREE.PointsMaterial({
+      material = new THREE.PointsMaterial({
         color: 0xf5f0eb,
         size: 0.025,
         transparent: true,
@@ -94,6 +98,7 @@ export default function HeroCanvas() {
       // Animation
       let t = 0;
       function animate() {
+        if (!isVisible) return;
         animId = requestAnimationFrame(animate);
         t += 0.0004;
 
@@ -105,18 +110,41 @@ export default function HeroCanvas() {
         renderer.render(scene, camera);
       }
 
+      // Observer pour mettre en pause la boucle de rendu quand hors viewport
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            isVisible = entry.isIntersecting;
+            if (isVisible) {
+              cancelAnimationFrame(animId);
+              animate();
+            }
+          });
+        },
+        { threshold: 0.05 }
+      );
+
+      observer.observe(canvas!);
       animate();
+
+      return observer;
     }
 
-    init();
+    let observerInstance: IntersectionObserver | undefined;
+    init().then((obs) => {
+      observerInstance = obs;
+    });
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
       cancelAnimationFrame(animId);
+      observerInstance?.disconnect();
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
+      geometry?.dispose();
+      material?.dispose();
       renderer?.dispose();
       scene?.clear();
     };
@@ -136,3 +164,4 @@ export default function HeroCanvas() {
     />
   );
 }
+
