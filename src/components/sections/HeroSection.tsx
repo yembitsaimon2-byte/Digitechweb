@@ -178,27 +178,29 @@ export default function HeroSection() {
               Studio digital
             </span>
 
-            {/* Titre principal — coupé en deux lignes pour animation */}
+            {/* Titre principal — coupé en deux lignes fluides pour l'animation GSAP */}
             <h1
               className="type-display"
               style={{
                 color: 'var(--color-cream)',
-                maxWidth: '14ch',
-                marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)',
+                fontSize: 'clamp(2.15rem, 3.8vw, 3.6rem)',
+                lineHeight: 1.15,
+                maxWidth: '44ch',
+                marginBottom: 'clamp(1.5rem, 2.5vw, 2.25rem)',
               }}
             >
               <span
                 style={{ display: 'block', overflow: 'hidden' }}
               >
                 <span ref={line1Ref} style={{ display: 'block', opacity: 0 }}>
-                  Nous créons
+                  Nous digitalisons votre activité pour vous aider
                 </span>
               </span>
               <span
                 style={{ display: 'block', overflow: 'hidden' }}
               >
                 <span ref={line2Ref} style={{ display: 'block', opacity: 0 }}>
-                  le digital qui fait{' '}
+                  à mieux{' '}
                   <em
                     style={{
                       fontStyle: 'normal',
@@ -206,9 +208,9 @@ export default function HeroSection() {
                       display: 'inline',
                     }}
                   >
-                    avancer
+                    vendre
                   </em>
-                  {' '}votre entreprise.
+                  , mieux travailler et mieux grandir.
                 </span>
               </span>
             </h1>
@@ -218,13 +220,15 @@ export default function HeroSection() {
               ref={subtitleRef}
               className="type-lead"
               style={{
+                fontSize: 'clamp(0.95rem, 1.2vw, 1.2rem)',
+                lineHeight: 1.6,
                 maxWidth: '52ch',
-                marginBottom: 'clamp(2rem, 4vw, 3rem)',
+                marginBottom: 'clamp(2rem, 3.5vw, 2.75rem)',
                 opacity: 0,
+                color: 'var(--color-cream-dim)',
               }}
             >
-              Nous concevons des expériences numériques, des logiciels et des identités
-              digitales qui transforment les idées ambitieuses en projets concrets.
+              Sites web, applications, logiciels sur mesure et plateformes digitales : nous créons les outils dont votre entreprise a besoin pour atteindre ses objectifs, servir ses clients et accélérer sa croissance.
             </p>
 
             {/* CTAs */}
