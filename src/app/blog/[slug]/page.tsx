@@ -166,6 +166,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Yembit Saïmon',
+    alternateName: ['Yembit Saimon', 'Saïmon Yembit', 'Saimon Yembit'],
     jobTitle: 'Fondateur & Développeur Web',
     worksFor: {
       '@type': 'Organization',

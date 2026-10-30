@@ -102,7 +102,7 @@ export default function AboutSection() {
             className="about-portrait-col"
           >
             <div
-              aria-label="Portrait de YEMBIT Saimon"
+              aria-label="Portrait de Yembit Saïmon"
               style={{
                 width: '100%',
                 aspectRatio: '3/4',
@@ -121,7 +121,7 @@ export default function AboutSection() {
             >
               <img
                 src="/images/founder.jpg"
-                alt="YEMBIT Saimon — Fondateur de Digitech Web"
+                alt="Yembit Saïmon — Fondateur de Digitech Web"
                 style={{
                   position: 'absolute',
                   inset: 0,
@@ -166,7 +166,7 @@ export default function AboutSection() {
                 marginBottom: '0.25rem',
               }}
             >
-              YEMBIT Saimon
+              Yembit Saïmon
             </p>
             <p
               className="type-small"
@@ -181,7 +181,7 @@ export default function AboutSection() {
             </p>
 
             <p className="type-body" style={{ color: 'var(--color-cream-dim)', marginBottom: '3rem' }}>
-              Passionné par le digital, le design et l'innovation, YEMBIT Saimon a fondé
+              Passionné par le digital, le design et l'innovation, Yembit Saïmon a fondé
               Digitech Web avec la volonté de réunir créativité, technologie et vision
               stratégique au sein d'un même studio.
             </p>

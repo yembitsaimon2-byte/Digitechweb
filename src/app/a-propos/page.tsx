@@ -5,7 +5,7 @@ import { TECHNOLOGIES } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'À propos — Digitech Web',
   description:
-    'Découvrez Digitech Web, studio digital fondé par YEMBIT Saimon. Notre vision, notre méthode et notre équipe au service de vos projets ambitieux.',
+    'Découvrez Digitech Web, studio digital fondé par Yembit Saïmon. Notre vision, notre méthode et notre équipe au service de vos projets ambitieux.',
   alternates: { canonical: 'https://www.digitechweb.online/a-propos' },
 };
 
@@ -57,7 +57,7 @@ export default function AProposPage() {
             {/* Portrait fondateur */}
             <div style={{ gridColumn: 'span 4' }}>
               <div
-                aria-label="Portrait de YEMBIT Saimon"
+                aria-label="Portrait de Yembit Saïmon"
                 style={{
                   width: '100%',
                   aspectRatio: '3/4',
@@ -70,7 +70,7 @@ export default function AProposPage() {
               >
                 <img
                   src="/images/founder.jpg"
-                  alt="YEMBIT Saimon — Fondateur de Digitech Web"
+                  alt="Yembit Saïmon — Fondateur de Digitech Web"
                   style={{
                     position: 'absolute',
                     inset: 0,
@@ -98,14 +98,14 @@ export default function AProposPage() {
                   marginBottom: '0.25rem',
                 }}
               >
-                YEMBIT Saimon
+                Yembit Saïmon
               </p>
               <p className="type-small" style={{ color: 'var(--color-accent)', marginBottom: '2.5rem' }}>
                 Fondateur et directeur créatif
               </p>
 
               <p className="type-body-lg" style={{ color: 'var(--color-cream-dim)', marginBottom: '1.5rem' }}>
-                Passionné par le digital, le design et l'innovation, YEMBIT Saimon a fondé
+                Passionné par le digital, le design et l'innovation, Yembit Saïmon a fondé
                 Digitech Web avec la volonté de réunir créativité, technologie et vision
                 stratégique au sein d'un même studio.
               </p>

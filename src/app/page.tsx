@@ -12,7 +12,7 @@ import CtaSection from '@/components/sections/CtaSection';
 export const metadata: Metadata = {
   title: 'Digitech Web — Agence Digitale Premium | Sites, Logiciels, Applications',
   description:
-    'Digitech Web conçoit et développe des expériences numériques, des logiciels sur mesure et des identités digitales. Studio fondé par YEMBIT Saimon.',
+    'Digitech Web conçoit et développe des expériences numériques, des logiciels sur mesure et des identités digitales. Studio fondé par Yembit Saïmon.',
   alternates: {
     canonical: 'https://www.digitechweb.online',
   },

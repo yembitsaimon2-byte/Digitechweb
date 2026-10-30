@@ -53,7 +53,7 @@ export default async function Image() {
             Nous digitalisons votre activité pour mieux vendre, travailler et grandir.
           </div>
           <div style={{ fontSize: '24px', color: '#9A9590', maxWidth: '850px' }}>
-            Sites web, applications & logiciels sur mesure • Studio digital fondé par YEMBIT Saimon
+            Sites web, applications & logiciels sur mesure • Studio digital fondé par Yembit Saïmon
           </div>
         </div>
 

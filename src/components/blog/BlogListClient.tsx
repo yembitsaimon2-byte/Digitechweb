@@ -382,7 +382,11 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
             color: 'var(--color-cream-dim, #a3a3a3)',
           }}
         >
-          <p>Aucun article trouvé dans cette catégorie pour le moment.</p>
+          <p>
+            {selectedCategory === 'Tous'
+              ? 'Aucun article pour le moment. Revenez bientôt.'
+              : 'Aucun article trouvé dans cette catégorie pour le moment.'}
+          </p>
         </div>
       )}
     </div>

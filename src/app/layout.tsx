@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: '%s | Digitech Web',
   },
   description:
-    'Digitech Web conçoit et développe des sites web, logiciels, applications et identités digitales pour des marques ambitieuses. Studio digital fondé par YEMBIT Saimon.',
+    'Digitech Web conçoit et développe des sites web, logiciels, applications et identités digitales pour des marques ambitieuses. Studio digital fondé par Yembit Saïmon.',
   keywords: [
     'agence digitale',
     'conception site web',
@@ -46,10 +46,11 @@ export const metadata: Metadata = {
     'branding',
     'stratégie digitale',
     'SEO',
-    'YEMBIT Saimon',
+    'Yembit Saïmon',
+    'Yembit Saimon',
     'Digitech Web',
   ],
-  authors: [{ name: 'YEMBIT Saimon', url: 'https://www.digitechweb.online' }],
+  authors: [{ name: 'Yembit Saïmon', url: 'https://www.digitechweb.online' }],
   creator: 'Digitech Web',
   publisher: 'Digitech Web',
   robots: {
@@ -134,7 +135,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 'Agence digitale spécialisée dans la conception de sites web, logiciels, applications mobiles et identités digitales.',
               founder: {
                 '@type': 'Person',
-                name: 'YEMBIT Saimon',
+                name: 'Yembit Saïmon',
+                alternateName: ['Yembit Saimon', 'Saïmon Yembit', 'Saimon Yembit'],
               },
               sameAs: ['https://www.instagram.com/digitech_web1/'],
             }),

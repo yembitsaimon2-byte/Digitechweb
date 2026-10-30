@@ -222,7 +222,7 @@ export default function Footer() {
             letterSpacing: 'var(--tracking-wide)',
           }}
         >
-          Fondé par YEMBIT Saimon
+          Fondé par Yembit Saïmon
         </p>
       </div>
 
