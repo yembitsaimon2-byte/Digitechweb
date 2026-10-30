@@ -46,7 +46,7 @@ export default function RealisationsPage() {
         }}
       >
         <div style={{ maxWidth: 'var(--container)', margin: '0 auto' }}>
-          {PROJECTS.map((project, i) => (
+          {PROJECTS.filter((p) => p.status !== 'draft').map((project, i) => (
             <article
               key={project.id}
               style={{

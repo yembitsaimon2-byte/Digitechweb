@@ -71,7 +71,7 @@ export default function ProjectsSection() {
 
         {/* Liste projets */}
         <div>
-          {PROJECTS.map((project, i) => (
+          {PROJECTS.filter((p) => p.status !== 'draft').map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}
         </div>

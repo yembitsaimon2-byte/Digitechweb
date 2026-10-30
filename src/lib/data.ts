@@ -174,6 +174,17 @@ export const PROJECTS: Project[] = [
       '/images/digiautocars/digiautocars-04.png',
     ],
   },
+  {
+    id: 'project-04',
+    number: '04',
+    title: 'Dorcas Moïra — Portfolio mannequin',
+    category: 'Site web',
+    description:
+      'Portfolio éditorial et immersif pour mannequin professionnel, pensé pour sublimer l\'image de marque et valoriser les collaborations de prestige.',
+    slug: 'dorcas-moira',
+    status: 'draft',
+    images: [],
+  },
 ];
 
 /* ============================================================

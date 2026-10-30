@@ -29,6 +29,7 @@ export interface Project {
   video?: string;
   images?: string[];
   placeholder?: boolean;
+  status?: 'published' | 'draft';
 }
 
 export interface MethodStep {
