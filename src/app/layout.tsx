@@ -89,6 +89,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://digitech-web.fr',
+    types: {
+      'application/rss+xml': 'https://digitech-web.fr/blog/rss.xml',
+    },
   },
 };
 
@@ -110,6 +113,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Flux RSS du Blog Digitech Web"
+          href="/blog/rss.xml"
+        />
         {/* Structured Data — Organization */}
         <script
           type="application/ld+json"

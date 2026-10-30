@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { PROJECTS } from '@/lib/data';
+import { getAllPosts } from '@/lib/blog';
 
 const BASE_URL = 'https://digitech-web.fr';
 
@@ -30,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
@@ -37,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const projectPages: MetadataRoute.Sitemap = PROJECTS.filter((p) => !p.placeholder).map(
+  const projectPages: MetadataRoute.Sitemap = PROJECTS.filter((p) => !p.placeholder && p.status !== 'draft').map(
     (project) => ({
       url: `${BASE_URL}/realisations/${project.slug}`,
       lastModified: new Date(),
@@ -46,5 +53,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  return [...staticPages, ...projectPages];
+  // Articles de blog publiés uniquement
+  const publishedBlogPosts = getAllPosts(false);
+  const blogPages: MetadataRoute.Sitemap = publishedBlogPosts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.updated || post.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...projectPages, ...blogPages];
 }

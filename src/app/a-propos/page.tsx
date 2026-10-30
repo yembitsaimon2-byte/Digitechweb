@@ -119,7 +119,7 @@ export default function AProposPage() {
                 style={{
                   borderLeft: '2px solid var(--color-accent)',
                   paddingLeft: '1.5rem',
-                  marginBottom: '3rem',
+                  marginBottom: '2rem',
                 }}
               >
                 <p
@@ -136,6 +136,23 @@ export default function AProposPage() {
                   Il devrait laisser une impression.&nbsp;»
                 </p>
               </blockquote>
+
+              <Link
+                href="/blog/yembit-saimon-fondateur-digitech-web"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontSize: 'var(--text-small)',
+                  color: 'var(--color-accent)',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                }}
+                className="hover:underline"
+              >
+                <span>Lire le portrait de Yembit Saïmon</span>
+                <span>→</span>
+              </Link>
             </div>
           </div>
         </div>
