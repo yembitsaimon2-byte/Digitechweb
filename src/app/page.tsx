@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'Digitech Web conçoit et développe des expériences numériques, des logiciels sur mesure et des identités digitales. Studio fondé par YEMBIT Saimon.',
   alternates: {
-    canonical: 'https://digitech-web.fr',
+    canonical: 'https://www.digitechweb.online',
   },
 };
 

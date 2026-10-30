@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { PROJECTS } from '@/lib/data';
 import { getAllPosts } from '@/lib/blog';
 
-const BASE_URL = 'https://digitech-web.fr';
+const BASE_URL = 'https://www.digitechweb.online';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

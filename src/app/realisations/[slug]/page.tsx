@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.title} — Case Study | Digitech Web`,
     description: project.description,
-    alternates: { canonical: `https://digitech-web.fr/realisations/${slug}` },
+    alternates: { canonical: `https://www.digitechweb.online/realisations/${slug}` },
   };
 }
 

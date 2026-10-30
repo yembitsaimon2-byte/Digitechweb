@@ -5,6 +5,8 @@
 
 import type { Service, Project, MethodStep, Technology } from '@/types';
 
+export const SITE_URL = 'https://www.digitechweb.online';
+
 /* ============================================================
    INFORMATIONS DE CONTACT
    Modifier ces valeurs avec les vraies coordonnées.

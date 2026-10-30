@@ -30,7 +30,7 @@ const inter = Inter({
    METADATA
    ============================================================ */
 export const metadata: Metadata = {
-  metadataBase: new URL('https://digitech-web.fr'),
+  metadataBase: new URL('https://www.digitechweb.online'),
   title: {
     default: 'Digitech Web — Agence Digitale Premium',
     template: '%s | Digitech Web',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     'YEMBIT Saimon',
     'Digitech Web',
   ],
-  authors: [{ name: 'YEMBIT Saimon', url: 'https://digitech-web.fr' }],
+  authors: [{ name: 'YEMBIT Saimon', url: 'https://www.digitechweb.online' }],
   creator: 'Digitech Web',
   publisher: 'Digitech Web',
   robots: {
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://digitech-web.fr',
+    url: 'https://www.digitechweb.online',
     siteName: 'Digitech Web',
     title: 'Digitech Web — Agence Digitale Premium',
     description:
@@ -88,9 +88,9 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://digitech-web.fr',
+    canonical: 'https://www.digitechweb.online',
     types: {
-      'application/rss+xml': 'https://digitech-web.fr/blog/rss.xml',
+      'application/rss+xml': 'https://www.digitechweb.online/blog/rss.xml',
     },
   },
 };
@@ -127,14 +127,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'Digitech Web',
-              url: 'https://digitech-web.fr',
+              url: 'https://www.digitechweb.online',
+              logo: 'https://www.digitechweb.online/images/digi-logo.png',
+              foundingDate: '2022',
               description:
                 'Agence digitale spécialisée dans la conception de sites web, logiciels, applications mobiles et identités digitales.',
               founder: {
                 '@type': 'Person',
                 name: 'YEMBIT Saimon',
               },
-              sameAs: [],
+              sameAs: ['https://www.instagram.com/digitech_web1/'],
             }),
           }}
         />

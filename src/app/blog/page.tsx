@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     'Conseils, coulisses et réalisations d’une agence web à Casablanca. Retours d’expérience, guides techniques et vision par Yembit Saïmon.',
   alternates: {
-    canonical: 'https://digitech-web.fr/blog',
+    canonical: 'https://www.digitechweb.online/blog',
   },
   openGraph: {
     title: 'Blog Digitech Web | Conseils, Coulisses & Réalisations Web',
     description:
       'Conseils, coulisses et réalisations d’une agence web à Casablanca. Retours d’expérience, guides techniques et vision par Yembit Saïmon.',
-    url: 'https://digitech-web.fr/blog',
+    url: 'https://www.digitechweb.online/blog',
     siteName: 'Digitech Web',
     locale: 'fr_FR',
     type: 'website',
@@ -29,14 +29,15 @@ export default function BlogPage() {
     '@type': 'Blog',
     name: 'Blog Digitech Web',
     description: 'Conseils, coulisses et réalisations d’une agence web à Casablanca.',
-    url: 'https://digitech-web.fr/blog',
+    url: 'https://www.digitechweb.online/blog',
     publisher: {
       '@type': 'Organization',
       name: 'Digitech Web',
-      url: 'https://digitech-web.fr',
+      url: 'https://www.digitechweb.online',
+      foundingDate: '2022',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://digitech-web.fr/images/digi-logo.png',
+        url: 'https://www.digitechweb.online/images/digi-logo.png',
       },
     },
   };

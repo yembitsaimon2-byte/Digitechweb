@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'À propos — Digitech Web',
   description:
     'Découvrez Digitech Web, studio digital fondé par YEMBIT Saimon. Notre vision, notre méthode et notre équipe au service de vos projets ambitieux.',
-  alternates: { canonical: 'https://digitech-web.fr/a-propos' },
+  alternates: { canonical: 'https://www.digitechweb.online/a-propos' },
 };
 
 export default function AProposPage() {

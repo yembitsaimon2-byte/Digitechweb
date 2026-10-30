@@ -75,7 +75,7 @@ export async function POST(request: Request) {
           <div class="container">
             <div class="header">
               <h1 class="title">Nouvelle Demande de Projet</h1>
-              <p class="subtitle">Transmise via le formulaire de contact digitech-web.fr</p>
+              <p class="subtitle">Transmise via le formulaire de contact digitechweb.online</p>
             </div>
 
             <div class="field-group">

@@ -166,7 +166,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               letterSpacing: '0.05em',
             }}
           >
-            digitech-web.fr
+            www.digitechweb.online
           </span>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://digitech-web.fr/sitemap.xml',
-    host: 'https://digitech-web.fr',
+    sitemap: 'https://www.digitechweb.online/sitemap.xml',
+    host: 'https://www.digitechweb.online',
   };
 }

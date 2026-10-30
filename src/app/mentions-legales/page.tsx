@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Mentions Légales — Digitech Web',
   description: 'Mentions légales de l\'agence digitale Digitech Web, fondée par YEMBIT Saimon.',
-  alternates: { canonical: 'https://digitech-web.fr/mentions-legales' },
+  alternates: { canonical: 'https://www.digitechweb.online/mentions-legales' },
 };
 
 export default function MentionsLegalesPage() {
@@ -74,7 +74,7 @@ export default function MentionsLegalesPage() {
               4. Limitations de responsabilité
             </h2>
             <p>
-              YEMBIT Saimon ne pourra être tenu pour responsable des dommages directs et indirects causés au matériel de {"l'utilisateur"}, lors de {"l'accès"} au site https://digitech-web.fr.
+              YEMBIT Saimon ne pourra être tenu pour responsable des dommages directs et indirects causés au matériel de {"l'utilisateur"}, lors de {"l'accès"} au site https://www.digitechweb.online.
             </p>
             <p className="type-body" style={{ color: 'var(--color-cream-dim)' }}>
               Pour toute question ou demande d'information concernant le site, vous pouvez
@@ -84,7 +84,7 @@ export default function MentionsLegalesPage() {
               </a>.
             </p>
             <p>
-              YEMBIT Saimon décline toute responsabilité quant à {"l'utilisation"} qui pourrait être faite des informations et contenus présents sur https://digitech-web.fr.
+              YEMBIT Saimon décline toute responsabilité quant à {"l'utilisation"} qui pourrait être faite des informations et contenus présents sur https://www.digitechweb.online.
             </p>
           </section>
         </div>

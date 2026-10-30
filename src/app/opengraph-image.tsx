@@ -59,7 +59,7 @@ export default async function Image() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <span style={{ fontSize: '20px', color: '#C8F04A', fontWeight: 600 }}>
-            digitech-web.fr
+            digitechweb.online
           </span>
         </div>
       </div>

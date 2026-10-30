@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Nos Services — Digitech Web',
   description:
     'Sites web, logiciels sur mesure, applications mobiles, e-commerce, identité visuelle, stratégie digitale et référencement. Découvrez tous les services de Digitech Web.',
-  alternates: { canonical: 'https://digitech-web.fr/services' },
+  alternates: { canonical: 'https://www.digitechweb.online/services' },
 };
 
 export default function ServicesPage() {

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Politique de Confidentialité — Digitech Web',
   description: 'Politique de confidentialité et gestion des données personnelles de Digitech Web.',
-  alternates: { canonical: 'https://digitech-web.fr/politique-de-confidentialite' },
+  alternates: { canonical: 'https://www.digitechweb.online/politique-de-confidentialite' },
 };
 
 export default function PolitiqueConfidentialitePage() {
@@ -37,7 +37,7 @@ export default function PolitiqueConfidentialitePage() {
               1. Collecte des données personnelles
             </h2>
             <p>
-              Dans le cadre de {"l'utilisation"} du site https://digitech-web.fr, des données personnelles peuvent être collectées lorsque vous utilisez le formulaire de contact :
+              Dans le cadre de {"l'utilisation"} du site https://www.digitechweb.online, des données personnelles peuvent être collectées lorsque vous utilisez le formulaire de contact :
             </p>
             <ul style={{ paddingLeft: '1.5rem', listStyle: 'disc' }} className="flex flex-col gap-2">
               <li>Nom / Prénom</li>

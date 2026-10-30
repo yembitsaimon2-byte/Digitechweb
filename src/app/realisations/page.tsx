@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Réalisations — Digitech Web',
   description:
     'Découvrez les projets conçus et développés par Digitech Web : sites web, logiciels, applications et expériences digitales.',
-  alternates: { canonical: 'https://digitech-web.fr/realisations' },
+  alternates: { canonical: 'https://www.digitechweb.online/realisations' },
 };
 
 export default function RealisationsPage() {

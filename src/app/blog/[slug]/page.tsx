@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description = description.substring(0, 157) + '...';
   }
 
-  const url = `https://digitech-web.fr/blog/${post.slug}`;
+  const url = `https://www.digitechweb.online/blog/${post.slug}`;
 
   return {
     title,
@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const relatedPosts = getRelatedPosts(post.slug, post.category, 2);
-  const articleUrl = `https://digitech-web.fr/blog/${post.slug}`;
+  const articleUrl = `https://www.digitechweb.online/blog/${post.slug}`;
 
   // Formatter la date en français
   const formatDate = (dateStr: string) => {
@@ -116,18 +116,19 @@ export default async function BlogPostPage({ params }: PageProps) {
     author: {
       '@type': 'Person',
       name: post.author,
-      url: 'https://digitech-web.fr/a-propos',
+      url: 'https://www.digitechweb.online/a-propos',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Digitech Web',
-      url: 'https://digitech-web.fr',
+      url: 'https://www.digitechweb.online',
+      foundingDate: '2022',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://digitech-web.fr/images/digi-logo.png',
+        url: 'https://www.digitechweb.online/images/digi-logo.png',
       },
     },
-    image: `https://digitech-web.fr${post.coverImage}`,
+    image: `https://www.digitechweb.online${post.coverImage}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': articleUrl,
@@ -143,13 +144,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Accueil',
-        item: 'https://digitech-web.fr',
+        item: 'https://www.digitechweb.online',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog',
-        item: 'https://digitech-web.fr/blog',
+        item: 'https://www.digitechweb.online/blog',
       },
       {
         '@type': 'ListItem',
@@ -169,10 +170,11 @@ export default async function BlogPostPage({ params }: PageProps) {
     worksFor: {
       '@type': 'Organization',
       name: 'Digitech Web',
-      url: 'https://digitech-web.fr',
+      url: 'https://www.digitechweb.online',
+      foundingDate: '2022',
     },
-    url: 'https://digitech-web.fr/a-propos',
-    image: 'https://digitech-web.fr/images/founder.jpg',
+    url: 'https://www.digitechweb.online/a-propos',
+    image: 'https://www.digitechweb.online/images/founder.jpg',
     sameAs: ['https://www.instagram.com/digitech_web1/'],
   };
 

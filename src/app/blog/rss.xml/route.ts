@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/blog';
 export const dynamic = 'force-static';
 
 export async function GET() {
-  const siteUrl = 'https://digitech-web.fr';
+  const siteUrl = 'https://www.digitechweb.online';
   // En production, seuls les articles publiés figurent dans le flux RSS
   const posts = getAllPosts(process.env.NODE_ENV !== 'production');
 
@@ -17,7 +17,7 @@ export async function GET() {
       <description><![CDATA[${post.description}]]></description>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <category><![CDATA[${post.category}]]></category>
-      <author>contact@digitech-web.fr (${post.author})</author>
+      <author>digitechweb98@gmail.com (${post.author})</author>
     </item>`
     )
     .join('');
