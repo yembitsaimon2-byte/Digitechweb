@@ -6,23 +6,23 @@ import { gsap } from '@/lib/gsap';
 const PRINCIPLES = [
   {
     number: '01',
-    title: 'Sur mesure',
-    description: 'Aucune solution standard lorsque votre projet mérite une réponse pensée pour lui.',
+    title: 'Sur mesure & Sans template',
+    description: 'Aucune solution générique : chaque outil est pensé et développé spécifiquement pour répondre aux besoins de votre activité.',
   },
   {
     number: '02',
-    title: 'Design & Technologie',
-    description: 'Nous pensons la direction artistique et l\'ingénierie comme une seule expérience.',
+    title: 'Sites rapides & Optimisés mobile',
+    description: 'Des interfaces légères, fluides et parfaitement responsives sur tous les écrans (smartphones, tablettes et ordinateurs).',
   },
   {
     number: '03',
-    title: 'Performance',
-    description: 'Des produits rapides, accessibles et conçus pour évoluer.',
+    title: 'Accompagnement de A à Z',
+    description: 'De la phase de cadrage stratégique et de conception UX/UI jusqu\'à la mise en production opérationnelle de votre projet.',
   },
   {
     number: '04',
-    title: 'Vision business',
-    description: 'Chaque décision digitale doit servir un objectif concret.',
+    title: 'Support & Évolution',
+    description: 'Une disponibilité continue et réactive après livraison pour assurer la maintenance, la sécurité et l\'évolution de vos plateformes.',
   },
 ];
 
