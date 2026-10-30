@@ -338,21 +338,40 @@ export default function ContactPage() {
                     placeholder="Décrivez votre projet, vos objectifs et vos contraintes..."
                   />
 
-                  {/* Error global */}
+                  {/* Error global avec alternative WhatsApp directe */}
                   {status === 'error' && (
-                    <p
+                    <div
                       role="alert"
                       style={{
-                        color: '#F87171',
-                        fontSize: 'var(--text-small)',
-                        padding: '0.75rem 1rem',
-                        backgroundColor: 'rgba(248,113,113,0.1)',
+                        padding: '1.25rem',
+                        backgroundColor: 'rgba(248,113,113,0.08)',
                         borderRadius: 'var(--radius-md)',
-                        border: '1px solid rgba(248,113,113,0.3)',
+                        border: '1px solid rgba(248,113,113,0.25)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.75rem',
                       }}
                     >
-                      Une erreur s'est produite. Veuillez réessayer ou nous contacter directement par e-mail.
-                    </p>
+                      <p style={{ color: '#F87171', fontSize: 'var(--text-small)', margin: 0, lineHeight: 1.5 }}>
+                        L'envoi par formulaire est temporairement indisponible ou a rencontré une erreur. Pour une réponse rapide, échangeons directement sur WhatsApp.
+                      </p>
+                      <a
+                        href="https://wa.me/212770742458?text=Bonjour%20Digitech%20Web%2C%20je%20souhaite%20%C3%A9changer%20sur%20mon%20projet"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          color: 'var(--color-accent)',
+                          fontSize: 'var(--text-small)',
+                          fontWeight: 600,
+                          textDecoration: 'none',
+                        }}
+                      >
+                        <span>💬 Échanger immédiatement sur WhatsApp (+212 770 742 458) →</span>
+                      </a>
+                    </div>
                   )}
 
                   {/* Submit */}

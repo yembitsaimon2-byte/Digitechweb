@@ -43,14 +43,11 @@ export async function POST(request: Request) {
 
     if (!resend) {
       console.warn('⚠️ RESEND_API_KEY non configurée dans les variables d’environnement.');
-      // En l'absence de clé d'API (ex: dev local avant config Vercel), on valide la structure
       return NextResponse.json(
         {
-          success: true,
-          warning: 'API_KEY_MISSING',
-          message: 'Demande validée côté serveur (ajoutez RESEND_API_KEY sur Vercel pour la délivrabilité réelle).',
+          error: "Le service d'email n'est pas encore initialisé (clé RESEND_API_KEY manquante). Contactez-nous directement via WhatsApp au +212 770 742 458.",
         },
-        { status: 200 }
+        { status: 503 }
       );
     }
 
