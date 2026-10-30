@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useCursor } from '@/hooks/useCursor';
 import { gsap } from '@/lib/gsap';
 
@@ -10,13 +10,22 @@ import { gsap } from '@/lib/gsap';
  * Désactivé sur mobile (pointer: coarse).
  */
 export default function CustomCursor() {
+  const [mounted, setMounted] = useState(false);
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const { posRef, state, isVisible } = useCursor();
 
-  // Initialisation des animateurs GSAP rapides
   useEffect(() => {
-    if (!dotRef.current || !ringRef.current) return;
+    if (typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      setMounted(true);
+      document.body.classList.add('custom-cursor-active');
+      return () => document.body.classList.remove('custom-cursor-active');
+    }
+  }, []);
+
+  // Initialisation des animateurs GSAP rapides uniquement quand monté sur desktop
+  useEffect(() => {
+    if (!mounted || !dotRef.current || !ringRef.current) return;
 
     const setDotX = gsap.quickSetter(dotRef.current, 'x', 'px');
     const setDotY = gsap.quickSetter(dotRef.current, 'y', 'px');
@@ -36,15 +45,9 @@ export default function CustomCursor() {
     return () => {
       gsap.ticker.remove(updateCursorPosition);
     };
-  }, [posRef]);
+  }, [mounted, posRef]);
 
-  // Active la classe body pour masquer le curseur système
-  useEffect(() => {
-    const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (!isDesktop) return;
-    document.body.classList.add('custom-cursor-active');
-    return () => document.body.classList.remove('custom-cursor-active');
-  }, []);
+  if (!mounted) return null;
 
   // Style selon l'état (hover)
   const ringScale = {

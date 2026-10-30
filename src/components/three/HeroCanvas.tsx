@@ -64,8 +64,9 @@ export default function HeroCanvas() {
       camera = new THREE.PerspectiveCamera(65, w / h, 0.1, 1000);
       camera.position.z = 5;
 
-      // Particles geometry
-      const COUNT = prefersReduced ? 0 : 2000;
+      // Particles geometry — allégé sur mobile pour préserver le GPU / TBT
+      const isMobile = window.innerWidth < 768;
+      const COUNT = prefersReduced ? 0 : (isMobile ? 350 : 1800);
       const positions = new Float32Array(COUNT * 3);
       const sizes = new Float32Array(COUNT);
 

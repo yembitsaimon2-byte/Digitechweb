@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { gsap } from '@/lib/gsap';
@@ -24,6 +24,19 @@ export default function HeroSection() {
   const mediaRef = useRef<HTMLDivElement>(null);
   const scrollHintRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Canvas Three.js : activé uniquement sur Desktop pour maximiser le score Lighthouse mobile
+  const [showCanvas, setShowCanvas] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isDesktop = window.innerWidth >= 768;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (isDesktop && !prefersReduced) {
+        setShowCanvas(true);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -116,8 +129,8 @@ export default function HeroSection() {
         overflow: 'hidden',
       }}
     >
-      {/* Canvas WebGL */}
-      <HeroCanvas />
+      {/* Canvas WebGL — chargé dynamiquement sur desktop, désactivé sur mobile */}
+      {showCanvas && <HeroCanvas />}
 
       {/* Subtle grid lines */}
       <div
