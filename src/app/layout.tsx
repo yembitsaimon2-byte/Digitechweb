@@ -6,6 +6,8 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Providers from '@/components/layout/Providers';
 import CustomCursor from '@/components/ui/CustomCursor';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 /* ============================================================
    FONTS — auto-hébergées via next/font (zero CLS)
@@ -137,6 +139,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <Footer />
         </Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
