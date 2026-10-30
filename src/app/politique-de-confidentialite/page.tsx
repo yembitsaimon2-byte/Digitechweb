@@ -76,13 +76,25 @@ export default function PolitiqueConfidentialitePage() {
 
           <section className="flex flex-col gap-4">
             <h2 className="type-h3" style={{ color: 'var(--color-cream)' }}>
-              4. Vos droits
+              4. Conformité Loi 09-08 (CNDP) et RGPD
             </h2>
             <p>
-              Conformément à la réglementation RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité de vos données personnelles, ainsi qu'un droit de limitation et d'opposition au traitement de celles-ci.
+              Conformément à la loi marocaine n° 09-08 promulguée par le Dahir 1-09-15 du 18 février 2009 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel ainsi qu'aux standards internationaux de protection des données (RGPD) :
             </p>
+            <ul style={{ paddingLeft: '1.5rem', listStyle: 'disc' }} className="flex flex-col gap-2">
+              <li>Les données collectées font l'objet d'un traitement exclusivement destiné à la gestion des demandes formulées par les utilisateurs et aux échanges professionnels qui en découlent.</li>
+              <li>Aucune donnée à caractère personnel n'est cédée, louée, échangée ou transférée à des tiers sans votre consentement préalable.</li>
+              <li>Vous disposez d'un droit d'accès, d'information, de rectification et d'opposition concernant les données vous concernant.</li>
+            </ul>
             <p>
-              Pour exercer ces droits, vous pouvez nous contacter directement par e-mail à l'adresse suivante : <strong>digitechweb98@gmail.com</strong>.
+              Pour exercer ces droits ou pour toute question relative au traitement de vos données, vous pouvez nous adresser une demande par e-mail à :{' '}
+              <a href="mailto:digitechweb98@gmail.com" style={{ color: 'var(--color-accent)' }}>
+                digitechweb98@gmail.com
+              </a>{' '}
+              ou par téléphone au{' '}
+              <a href="https://wa.me/212770742458" style={{ color: 'var(--color-accent)' }}>
+                +212 770 742 458
+              </a>.
             </p>
           </section>
         </div>

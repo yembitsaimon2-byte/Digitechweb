@@ -37,14 +37,14 @@ export default function MentionsLegalesPage() {
               1. Édition du site
             </h2>
             <p>
-              En vertu de {"l'article"} 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans {"l'économie"} numérique, il est précisé aux utilisateurs du site internet <strong>https://digitech-web.fr</strong> {"l'identité"} des différents intervenants dans le cadre de sa réalisation et de son suivi :
+              Le site internet accessible à l'adresse <strong>digitechweb.vercel.app</strong> est édité par :
             </p>
             <ul style={{ paddingLeft: '1.5rem', listStyle: 'disc' }} className="flex flex-col gap-2">
-              <li><strong>Propriétaire du site :</strong> YEMBIT Saimon — Digitech Web</li>
+              <li><strong>Éditeur & Fondateur :</strong> YEMBIT Saimon — Digitech Web</li>
+              <li><strong>Statut de l'entreprise :</strong> En cours d'immatriculation</li>
               <li><strong>Directeur de la publication :</strong> YEMBIT Saimon</li>
-              <li><strong>Contact :</strong> contact@digitech-web.fr</li>
-              <li><strong>Adresse de l'entreprise :</strong> [Adresse postale à compléter]</li>
-              <li><strong>Numéro SIRET / Immatriculation :</strong> [Numéro SIRET / RCS à compléter]</li>
+              <li><strong>E-mail de contact :</strong> <a href="mailto:digitechweb98@gmail.com" style={{ color: 'var(--color-accent)' }}>digitechweb98@gmail.com</a></li>
+              <li><strong>Téléphone / WhatsApp :</strong> <a href="https://wa.me/212770742458" style={{ color: 'var(--color-accent)' }}>+212 770 742 458</a></li>
             </ul>
           </section>
 
@@ -53,7 +53,7 @@ export default function MentionsLegalesPage() {
               2. Hébergement
             </h2>
             <p>
-              Le site est hébergé par [Nom de l'hébergeur (ex: Vercel, Inc.)], situé à [Adresse de l'hébergeur], disponible au [Numéro de téléphone ou site de l'hébergeur].
+              Le site est hébergé par la société <strong>Vercel Inc.</strong>, située au 340 S Lemon Ave #4133 Walnut, CA 91789, États-Unis (téléphone : +1 559-288-7063, site web : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-accent)' }}>https://vercel.com</a>).
             </p>
           </section>
 
