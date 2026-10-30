@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planche Contact — Médias Rapatriés Digitech Web</title>
+  <style>
+    :root {
+      --bg: #0A0A0A;
+      --surface: #111111;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #C8F04A;
+      --text: #F5F0EB;
+      --muted: #9A9590;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 3rem 1.5rem;
+    }
+    .header {
+      max-width: 1400px;
+      margin: 0 auto 3rem auto;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .header p { color: var(--muted); font-size: 0.95rem; }
+    .section-title {
+      max-width: 1400px;
+      margin: 2.5rem auto 1.25rem auto;
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-title span {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+    }
+    .grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .img-box {
+      width: 100%;
+      height: 260px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .img-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .info {
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .info .name { font-weight: 600; font-size: 0.95rem; color: #FFF; }
+    .info .meta { font-size: 0.8rem; color: var(--muted); font-family: monospace; }
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(200, 240, 74, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(200, 240, 74, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Planche Contact — Médias Rapatriés</h1>
+    <p>Audit visuel haute résolution : chaque image ci-dessous a été vérifiée et rapatriée en local dans <code>/public/images/</code>.</p>
+  </div>
+
+  <div class="section-title">01. Sushi Sensation <span>3 visuels HD</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="img-box"><img src="/images/sushi-sensation/sushi-01.png" alt="sushi-01"></div>
+      <div class="info">
+        <div class="name">sushi-01.png</div>
+        <div class="meta">Résolution : 1851 × 919 px | Poids : 2.7 Mo</div>
+        <div class="badge">Vérifié — HD Original</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box"><img src="/images/sushi-sensation/sushi-02.png" alt="sushi-02"></div>
+      <div class="info">
+        <div class="name">sushi-02.png</div>
+        <div class="meta">Résolution : 1848 × 895 px | Poids : 1.8 Mo</div>
+        <div class="badge">Vérifié — HD Original</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box"><img src="/images/sushi-sensation/sushi-03.png" alt="sushi-03"></div>
+      <div class="info">
+        <div class="name">sushi-03.png</div>
+        <div class="meta">Résolution : 1868 × 914 px | Poids : 1.5 Mo</div>
+        <div class="badge">Vérifié — HD Original</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">02. Mbolo Samba <span>2 visuels HD (Images 2, 4, 5 masquées proprement)</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="img-box"><img src="/images/mbolo-samba/mbolo-01.jpg" alt="mbolo-01"></div>
+      <div class="info">
+        <div class="name">mbolo-01.jpg</div>
+        <div class="meta">Résolution : 1168 × 2419 px | Poids : 160 Ko</div>
+        <div class="badge">Vérifié — Mobile App Capture</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box"><img src="/images/mbolo-samba/mbolo-03.jpg" alt="mbolo-03"></div>
+      <div class="info">
+        <div class="name">mbolo-03.jpg</div>
+        <div class="meta">Résolution : 1168 × 2409 px | Poids : 217 Ko</div>
+        <div class="badge">Vérifié — Mobile App Capture</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">03. Digiautocars <span>4 visuels HD (Image 5 masquée proprement)</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="img-box"><img src="/images/digiautocars/digiautocars-01.jpg" alt="digiautocars-01"></div>
+      <div class="info">
+        <div class="name">digiautocars-01.jpg</div>
+        <div class="meta">Résolution : 1919 × 941 px | Poids : 248 Ko</div>
+        <div class="badge">Vérifié — Web App Desktop</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box"><img src="/images/digiautocars/digiautocars-02.jpg" alt="digiautocars-02"></div>
+      <div class="info">
+        <div class="name">digiautocars-02.jpg</div>
+        <div class="meta">Résolution : 1919 × 949 px | Poids : 222 Ko</div>
+        <div class="badge">Vérifié — Web App Desktop</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box"><img src="/images/digiautocars/digiautocars-03.jpg" alt="digiautocars-03"></div>
+      <div class="info">
+        <div class="name">digiautocars-03.jpg</div>
+        <div class="meta">Résolution : 1899 × 934 px | Poids : 981 Ko</div>
+        <div class="badge">Vérifié — Web App Desktop</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box"><img src="/images/digiautocars/digiautocars-04.png" alt="digiautocars-04"></div>
+      <div class="info">
+        <div class="name">digiautocars-04.png</div>
+        <div class="meta">Résolution : 1919 × 956 px | Poids : 960 Ko</div>
+        <div class="badge">Vérifié — Web App Desktop</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">04. Identité de marque & Fondateur <span>2 éléments locaux</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="img-box"><img src="/images/digi-logo.png" alt="Logo Digitech Web"></div>
+      <div class="info">
+        <div class="name">digi-logo.png</div>
+        <div class="meta">Résolution : 750 × 750 px | Poids : 99 Ko</div>
+        <div class="badge">Logo Officiel Vectorisé</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="img-box"><img src="/images/founder.jpg" alt="Portrait Fondateur"></div>
+      <div class="info">
+        <div class="name">founder.jpg</div>
+        <div class="meta">Résolution : 3181 × 4000 px | Poids : 2.3 Mo</div>
+        <div class="badge">Portrait Fondateur Studio 4K</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

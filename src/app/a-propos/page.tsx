@@ -69,7 +69,7 @@ export default function AProposPage() {
                 }}
               >
                 <img
-                  src="https://i.ibb.co/VcZ2xZsk/SAIMONNNN.jpg"
+                  src="/images/founder.jpg"
                   alt="YEMBIT Saimon — Fondateur de Digitech Web"
                   style={{
                     position: 'absolute',

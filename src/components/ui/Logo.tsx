@@ -15,7 +15,7 @@ interface LogoProps {
 export default function Logo({ className = '', height = 36, style }: LogoProps) {
   return (
     <img
-      src="https://i.ibb.co/FL1X204H/digi-logo.png"
+      src="/images/digi-logo.png"
       alt="Digitech Web"
       className={className}
       style={{

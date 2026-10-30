@@ -341,6 +341,11 @@ export default function CaseStudyView({ project }: CaseStudyViewProps) {
                     <img
                       src={media.src}
                       alt={`${project.title} — Visuel ${index + 1}`}
+                      onError={(e) => {
+                        (e.currentTarget as HTMLElement).style.display = 'none';
+                      }}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
                       style={{
                         maxWidth: '100%',
                         maxHeight: '100%',

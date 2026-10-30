@@ -140,9 +140,9 @@ export const PROJECTS: Project[] = [
     slug: 'sushi-sensation',
     video: '/videos/sushi-sensation.mp4',
     images: [
-      'https://i.ibb.co/Cp2x9vkX/SUSHI-SENSATION1.png',
-      'https://i.ibb.co/hx56QM6n/SUSHI-SENSATION2.png',
-      'https://i.ibb.co/PsYGDhkC/SUSHI-SENSATION3.png',
+      '/images/sushi-sensation/sushi-01.png',
+      '/images/sushi-sensation/sushi-02.png',
+      '/images/sushi-sensation/sushi-03.png',
     ],
   },
   {
@@ -155,11 +155,8 @@ export const PROJECTS: Project[] = [
     slug: 'mbolo-samba',
     video: '/videos/mbolo-samba.mp4',
     images: [
-      'https://i.ibb.co/RTsxxXvL/MBOLO-SAMBA-1.jpg',
-      'https://i.ibb.co/MkSNgg5b/MBOLO-SAMBA-2.jpg',
-      'https://i.ibb.co/DB9hcTp/MBOLO-SAMBA-3.jpg',
-      'https://i.ibb.co/gbCYn4Yk/MBOLO-SAMBA-4.jpg',
-      'https://i.ibb.co/nNYnLrxJ/MBOLO-SAMBA-5.jpg',
+      '/images/mbolo-samba/mbolo-01.jpg',
+      '/images/mbolo-samba/mbolo-03.jpg',
     ],
   },
   {
@@ -171,11 +168,10 @@ export const PROJECTS: Project[] = [
       'Un logiciel de gestion sur mesure pour agences automobiles, du suivi de stock à la relation client.',
     slug: 'digiautocars',
     images: [
-      'https://i.ibb.co/DHsMXWF5/Digiauto1.png',
-      'https://i.ibb.co/RGK2FNh7/Digiauto2.png',
-      'https://i.ibb.co/dsxwhHn1/Digiauto3.png',
-      'https://i.ibb.co/SXb8KzmB/Digiauto4.png',
-      'https://i.ibb.co/HDjDDtMj/Digiauto5.png',
+      '/images/digiautocars/digiautocars-01.jpg',
+      '/images/digiautocars/digiautocars-02.jpg',
+      '/images/digiautocars/digiautocars-03.jpg',
+      '/images/digiautocars/digiautocars-04.png',
     ],
   },
 ];

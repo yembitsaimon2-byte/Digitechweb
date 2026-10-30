@@ -363,6 +363,11 @@ export function ProjectVisual({ number, project }: { number?: string; project?: 
             key={src}
             src={src}
             alt={`${project?.title || 'Projet'} — Visuel ${index + 1}`}
+            onError={(e) => {
+              (e.currentTarget as HTMLElement).style.display = 'none';
+            }}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding="async"
             style={{
               position: 'absolute',
               inset: 0,
