@@ -43,3 +43,5 @@ next-env.d.ts
 # scratch & temporary reports
 /scratch
 
+# motion design source videos (originals, not for git)
+/videos-src/

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PROJECTS } from '@/lib/data';
 import { ProjectVisual } from '@/components/sections/ProjectsSection';
 import CtaSection from '@/components/sections/CtaSection';
+import MotionRealisationsShowcase from '@/components/ui/MotionRealisationsShowcase';
 
 export const metadata: Metadata = {
   title: 'Réalisations — Digitech Web',
@@ -123,6 +124,9 @@ export default function RealisationsPage() {
               </div>
             </article>
           ))}
+
+          {/* Showcase Motion Design */}
+          <MotionRealisationsShowcase />
 
           <div style={{ borderTop: '1px solid var(--color-border)' }} />
         </div>

@@ -9,7 +9,8 @@ export type ServiceId =
   | 'ecommerce'
   | 'branding'
   | 'strategie'
-  | 'referencement';
+  | 'referencement'
+  | 'motion-design';
 
 export interface Service {
   id: ServiceId;
@@ -17,6 +18,22 @@ export interface Service {
   title: string;
   description: string;
   items: string[];
+}
+
+export interface MotionVideo {
+  id: string;
+  title: string;
+  category: 'Motion design';
+  slug: string;
+  teaserMp4: string;
+  teaserWebm: string;
+  fullMp4: string;
+  posterJpg: string;
+  posterWebp: string;
+  posterAvif: string;
+  duration: number; // in seconds
+  uploadDate: string;
+  jsonLdDescription: string;
 }
 
 export interface Project {

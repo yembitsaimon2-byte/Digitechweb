@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SERVICES } from '@/lib/data';
 import Link from 'next/link';
+import MotionServiceShowcase from '@/components/ui/MotionServiceShowcase';
 
 export const metadata: Metadata = {
   title: 'Nos Services — Digitech Web',
@@ -123,6 +124,8 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
+
+                {service.id === 'motion-design' && <MotionServiceShowcase />}
               </div>
             </article>
           ))}

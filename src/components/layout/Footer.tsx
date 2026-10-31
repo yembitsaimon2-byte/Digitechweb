@@ -10,6 +10,7 @@ const FOOTER_SERVICES = [
   { label: 'Branding',          href: '/services#branding' },
   { label: 'Stratégie digitale',href: '/services#strategie' },
   { label: 'Référencement',     href: '/services#referencement' },
+  { label: 'Motion design',     href: '/services#motion-design' },
 ];
 
 /**
