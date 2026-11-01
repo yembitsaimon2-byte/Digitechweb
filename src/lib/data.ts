@@ -3,7 +3,7 @@
  * Modifier ces constantes pour mettre à jour le contenu du site.
  */
 
-import type { Service, Project, MethodStep, Technology } from '@/types';
+import type { Service, Project, MethodStep, Technology, MotionVideo } from '@/types';
 
 export const SITE_URL = 'https://www.digitechweb.online';
 
@@ -125,12 +125,74 @@ export const SERVICES: Service[] = [
       'Optimisation',
     ],
   },
+  {
+    id: 'motion-design',
+    number: '08',
+    title: 'Motion design et vidéo',
+    description:
+      'Des vidéos captivantes et des animations fluides qui valorisent votre produit et captent immédiatement l\'attention.',
+    items: [
+      'Vidéos produits & démos',
+      'Animations d\'interfaces',
+      'Spots publicitaires & réseaux sociaux',
+      'Format 9:16 mobile & 16:9 desktop',
+      'Sound design & habillage sonore',
+    ],
+  },
 ];
 
 /* ============================================================
    PROJETS / RÉALISATIONS
    Remplacer les placeholders par de vrais projets.
    ============================================================ */
+export const MOTION_VIDEOS: MotionVideo[] = [
+  {
+    id: 'motion-01',
+    title: 'MillionBuild',
+    category: 'Motion design',
+    slug: 'millionbuild',
+    teaserMp4: '/videos/millionbuild-teaser.mp4',
+    teaserWebm: '/videos/millionbuild-teaser.webm',
+    fullMp4: '/videos/millionbuild-full.mp4',
+    posterJpg: '/videos/millionbuild-poster.jpg',
+    posterWebp: '/videos/millionbuild-poster.webp',
+    posterAvif: '/videos/millionbuild-poster.avif',
+    duration: 47,
+    uploadDate: '2026-10-31',
+    jsonLdDescription: 'Vidéo motion design présentant l\'application MillionBuild de commande de matériaux de construction.',
+  },
+  {
+    id: 'motion-02',
+    title: 'SAB Service',
+    category: 'Motion design',
+    slug: 'sab-service',
+    teaserMp4: '/videos/sab-service-teaser.mp4',
+    teaserWebm: '/videos/sab-service-teaser.webm',
+    fullMp4: '/videos/sab-service-full.mp4',
+    posterJpg: '/videos/sab-service-poster.jpg',
+    posterWebp: '/videos/sab-service-poster.webp',
+    posterAvif: '/videos/sab-service-poster.avif',
+    duration: 59,
+    uploadDate: '2026-10-31',
+    jsonLdDescription: 'Vidéo motion design présentant SAB Service, accompagnement administratif pour étudiants et professionnels.',
+  },
+  {
+    id: 'motion-03',
+    title: 'Shopishap',
+    category: 'Motion design',
+    slug: 'shopishap',
+    teaserMp4: '/videos/shopishap-teaser.mp4',
+    teaserWebm: '/videos/shopishap-teaser.webm',
+    fullMp4: '/videos/shopishap-full.mp4',
+    posterJpg: '/videos/shopishap-poster.jpg',
+    posterWebp: '/videos/shopishap-poster.webp',
+    posterAvif: '/videos/shopishap-poster.avif',
+    duration: 23,
+    uploadDate: '2026-10-31',
+    jsonLdDescription: 'Vidéo motion design présentant Shopishap, plateforme de création de boutiques en ligne.',
+  },
+];
+
 export const PROJECTS: Project[] = [
   {
     id: 'project-01',

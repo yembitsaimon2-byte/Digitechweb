@@ -26,6 +26,7 @@ const TYPES_PROJET = [
   'Identité visuelle',
   'Stratégie digitale',
   'Référencement',
+  'Motion design',
   'Autre',
 ];
 
