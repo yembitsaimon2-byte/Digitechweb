@@ -22,13 +22,7 @@ export default function MotionServiceShowcase() {
         Exemples de réalisations
       </p>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '1.25rem',
-        }}
-      >
+      <div className="service-motion-grid">
         {MOTION_VIDEOS.map((video, index) => (
           <div
             key={video.id}
@@ -42,17 +36,6 @@ export default function MotionServiceShowcase() {
                 setActiveLightboxIndex(index);
               }
             }}
-            style={{
-              position: 'relative',
-              aspectRatio: '9 / 16',
-              borderRadius: '14px',
-              overflow: 'hidden',
-              cursor: 'pointer',
-              border: '1px solid var(--color-border)',
-              backgroundColor: '#121316',
-              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)',
-              transition: 'transform 0.3s ease, border-color 0.3s ease',
-            }}
             className="service-motion-card"
           >
             {/* Poster fallback */}
@@ -62,6 +45,7 @@ export default function MotionServiceShowcase() {
               <img
                 src={video.posterJpg}
                 alt={`Aperçu ${video.title}`}
+                loading="lazy"
                 style={{
                   position: 'absolute',
                   inset: 0,
@@ -73,7 +57,7 @@ export default function MotionServiceShowcase() {
               />
             </picture>
 
-            {/* Video preview on hover */}
+            {/* Video preview on hover / mobile */}
             <video
               muted
               loop
@@ -111,6 +95,7 @@ export default function MotionServiceShowcase() {
 
             {/* Play icon */}
             <div
+              className="service-play-icon"
               style={{
                 position: 'absolute',
                 top: '50%',
@@ -122,10 +107,12 @@ export default function MotionServiceShowcase() {
                 borderRadius: '50%',
                 background: 'rgba(255, 255, 255, 0.2)',
                 backdropFilter: 'blur(6px)',
+                WebkitBackdropFilter: 'blur(6px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#fff',
+                transition: 'transform 0.25s ease, background 0.25s ease',
               }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ transform: 'translateX(1px)' }}>
@@ -140,7 +127,7 @@ export default function MotionServiceShowcase() {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                padding: '1rem',
+                padding: 'clamp(0.75rem, 2.5vw, 1.125rem)',
                 zIndex: 4,
               }}
             >
@@ -160,7 +147,7 @@ export default function MotionServiceShowcase() {
               </span>
               <h3
                 style={{
-                  fontSize: '1rem',
+                  fontSize: 'clamp(0.9375rem, 2.5vw, 1.0625rem)',
                   fontWeight: 600,
                   color: '#ffffff',
                   margin: 0,
@@ -181,9 +168,62 @@ export default function MotionServiceShowcase() {
       />
 
       <style>{`
-        .service-motion-card:hover {
-          transform: translateY(-4px);
-          border-color: rgba(34, 197, 94, 0.4) !important;
+        .service-motion-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+        }
+
+        .service-motion-card {
+          position: relative;
+          aspect-ratio: 9 / 16;
+          border-radius: 14px;
+          overflow: hidden;
+          cursor: pointer;
+          border: 1px solid var(--color-border);
+          background-color: #121316;
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+          transition: transform 0.3s ease, border-color 0.3s ease;
+          touch-action: pan-x pan-y;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (min-width: 768px) {
+          .service-motion-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 197, 94, 0.4) !important;
+          }
+          .service-motion-card:hover .service-play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--color-accent, #22c55e) !important;
+            color: #000 !important;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .service-motion-grid {
+            display: flex !important;
+            flex-direction: row !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            gap: 1rem !important;
+            padding: 0.5rem 0.25rem 1rem 0.25rem !important;
+            -webkit-overflow-scrolling: touch !important;
+            scrollbar-width: none !important;
+          }
+
+          .service-motion-grid::-webkit-scrollbar {
+            display: none !important;
+          }
+
+          .service-motion-card {
+            flex: 0 0 clamp(190px, 58vw, 240px) !important;
+            scroll-snap-align: start !important;
+          }
+
+          .service-motion-card:active {
+            transform: scale(0.97) !important;
+          }
         }
       `}</style>
     </div>

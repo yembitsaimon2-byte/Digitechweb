@@ -12,29 +12,23 @@ export default function MotionRealisationsShowcase() {
       id="motion-design"
       aria-label="Projets Motion Design"
       style={{
-        paddingBlock: 'clamp(3rem, 6vw, 5rem)',
+        paddingBlock: 'clamp(2.5rem, 6vw, 4.5rem)',
         borderTop: '1px solid var(--color-border)',
       }}
     >
-      <div style={{ marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
-        <span className="type-label" style={{ display: 'block', marginBottom: '1rem', color: 'var(--color-accent, #22c55e)' }}>
+      <div style={{ marginBottom: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
+        <span className="type-label" style={{ display: 'block', marginBottom: '0.75rem', color: 'var(--color-accent, #22c55e)' }}>
           Motion design
         </span>
-        <h2 className="type-h2" style={{ color: 'var(--color-cream)', marginBottom: '0.75rem' }}>
+        <h2 className="type-h2" style={{ color: 'var(--color-cream)', marginBottom: '0.75rem', fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>
           Animations & formats vidéo
         </h2>
-        <p className="type-body" style={{ color: 'var(--color-cream-dim)', maxWidth: '52ch' }}>
+        <p className="type-body" style={{ color: 'var(--color-cream-dim)', maxWidth: '52ch', fontSize: 'clamp(0.9375rem, 2.5vw, 1.0625rem)' }}>
           Des créations en mouvement pensées pour dynamiser l’image de marque et illustrer clairement les fonctionnalités clés.
         </p>
       </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '2rem',
-        }}
-      >
+      <div className="realisations-motion-grid">
         {MOTION_VIDEOS.map((video, index) => (
           <div
             key={video.id}
@@ -48,17 +42,6 @@ export default function MotionRealisationsShowcase() {
                 setActiveLightboxIndex(index);
               }
             }}
-            style={{
-              position: 'relative',
-              aspectRatio: '9 / 16',
-              borderRadius: '16px',
-              overflow: 'hidden',
-              cursor: 'pointer',
-              border: '1px solid var(--color-border)',
-              backgroundColor: '#121316',
-              boxShadow: '0 15px 30px -10px rgba(0, 0, 0, 0.6)',
-              transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
-            }}
             className="realisation-motion-card"
           >
             {/* Poster fallback */}
@@ -68,6 +51,7 @@ export default function MotionRealisationsShowcase() {
               <img
                 src={video.posterJpg}
                 alt={`Aperçu vidéo ${video.title}`}
+                loading="lazy"
                 style={{
                   position: 'absolute',
                   inset: 0,
@@ -117,14 +101,15 @@ export default function MotionRealisationsShowcase() {
 
             {/* Play icon hint */}
             <div
+              className="realisation-play-icon"
               style={{
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 4,
-                width: '48px',
-                height: '48px',
+                width: '46px',
+                height: '46px',
                 borderRadius: '50%',
                 background: 'rgba(255, 255, 255, 0.2)',
                 backdropFilter: 'blur(8px)',
@@ -133,9 +118,8 @@ export default function MotionRealisationsShowcase() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#fff',
-                transition: 'transform 0.3s ease, background 0.3s ease',
+                transition: 'transform 0.25s ease, background 0.25s ease',
               }}
-              className="realisation-play-icon"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ transform: 'translateX(2px)' }}>
                 <polygon points="5 3 19 12 5 21 5 3" />
@@ -149,7 +133,7 @@ export default function MotionRealisationsShowcase() {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                padding: '1.25rem',
+                padding: 'clamp(1rem, 3vw, 1.35rem)',
                 zIndex: 4,
               }}
             >
@@ -169,7 +153,7 @@ export default function MotionRealisationsShowcase() {
               </span>
               <h3
                 style={{
-                  fontSize: '1.125rem',
+                  fontSize: 'clamp(1rem, 3vw, 1.15rem)',
                   fontWeight: 700,
                   color: '#ffffff',
                   margin: 0,
@@ -190,15 +174,63 @@ export default function MotionRealisationsShowcase() {
       />
 
       <style>{`
-        .realisation-motion-card:hover {
-          transform: translateY(-6px);
-          border-color: rgba(34, 197, 94, 0.4) !important;
-          box-shadow: 0 20px 40px -10px rgba(34, 197, 94, 0.15), 0 15px 30px -10px rgba(0, 0, 0, 0.8) !important;
+        .realisations-motion-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
         }
-        .realisation-motion-card:hover .realisation-play-icon {
-          transform: translate(-50%, -50%) scale(1.1);
-          background: var(--color-accent, #22c55e);
-          color: #000;
+
+        .realisation-motion-card {
+          position: relative;
+          aspect-ratio: 9 / 16;
+          border-radius: 16px;
+          overflow: hidden;
+          cursor: pointer;
+          border: 1px solid var(--color-border);
+          background-color: #121316;
+          box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.6);
+          transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+          touch-action: pan-x pan-y;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (min-width: 768px) {
+          .realisation-motion-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 197, 94, 0.4) !important;
+            box-shadow: 0 20px 40px -10px rgba(34, 197, 94, 0.15), 0 15px 30px -10px rgba(0, 0, 0, 0.8) !important;
+          }
+          .realisation-motion-card:hover .realisation-play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--color-accent, #22c55e);
+            color: #000;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .realisations-motion-grid {
+            display: flex !important;
+            flex-direction: row !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            gap: 1.15rem !important;
+            padding: 0.5rem 0.25rem 1rem 0.25rem !important;
+            -webkit-overflow-scrolling: touch !important;
+            scrollbar-width: none !important;
+          }
+
+          .realisations-motion-grid::-webkit-scrollbar {
+            display: none !important;
+          }
+
+          .realisation-motion-card {
+            flex: 0 0 clamp(210px, 64vw, 260px) !important;
+            scroll-snap-align: start !important;
+          }
+
+          .realisation-motion-card:active {
+            transform: scale(0.97) !important;
+          }
         }
       `}</style>
     </section>

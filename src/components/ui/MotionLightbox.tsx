@@ -78,13 +78,13 @@ export default function MotionLightbox({
     const deltaY = e.changedTouches[0].clientY - touchStartY.current;
 
     // Horizontal swipe
-    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
       if (deltaX > 0) {
         handlePrev();
       } else {
         handleNext();
       }
-    } else if (deltaY > 100) {
+    } else if (deltaY > 90) {
       // Pull down to dismiss
       onClose();
     }
@@ -106,102 +106,110 @@ export default function MotionLightbox({
       }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
+      className="motion-lightbox-root"
       style={{
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        backgroundColor: 'rgba(5, 5, 5, 0.95)',
+        backgroundColor: 'rgba(5, 5, 5, 0.96)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 'max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left))',
+        padding: 'max(0.75rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right)) max(0.75rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left))',
       }}
     >
       {/* Top Header / Bar */}
       <div
         style={{
           position: 'absolute',
-          top: 'max(1.25rem, env(safe-area-inset-top))',
-          left: 'max(1.25rem, env(safe-area-inset-left))',
-          right: 'max(1.25rem, env(safe-area-inset-right))',
+          top: 'max(1rem, env(safe-area-inset-top))',
+          left: 'max(1rem, env(safe-area-inset-left))',
+          right: 'max(1rem, env(safe-area-inset-right))',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          gap: '0.75rem',
           zIndex: 10,
           pointerEvents: 'none',
         }}
       >
-        <div style={{ pointerEvents: 'auto', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div
+          style={{
+            pointerEvents: 'auto',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.625rem',
+            overflow: 'hidden',
+          }}
+        >
           <span
             style={{
-              fontSize: '0.8125rem',
+              fontSize: 'clamp(0.6875rem, 2.5vw, 0.8125rem)',
               fontWeight: 600,
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
               color: 'var(--color-accent, #22c55e)',
               background: 'rgba(34, 197, 94, 0.12)',
               border: '1px solid rgba(34, 197, 94, 0.25)',
-              padding: '0.25rem 0.625rem',
+              padding: '0.2rem 0.55rem',
               borderRadius: '9999px',
+              flexShrink: 0,
             }}
           >
             Motion design
           </span>
           <h2
             style={{
-              fontSize: '1.125rem',
+              fontSize: 'clamp(1rem, 3.5vw, 1.125rem)',
               fontWeight: 600,
               color: '#ffffff',
               margin: 0,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
             }}
           >
             {currentVideo.title}
           </h2>
         </div>
 
-        {/* Close Button */}
+        {/* Close Button — 44x44px mobile touch target */}
         <button
           onClick={onClose}
           type="button"
           aria-label="Fermer la vidéo"
           style={{
             pointerEvents: 'auto',
-            background: 'rgba(255, 255, 255, 0.1)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
+            background: 'rgba(255, 255, 255, 0.12)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
             color: '#ffffff',
             borderRadius: '9999px',
-            width: '42px',
-            height: '42px',
+            width: '44px',
+            height: '44px',
+            flexShrink: 0,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
             transition: 'background-color 0.2s, transform 0.2s',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-            e.currentTarget.style.transform = 'scale(1.05)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-            e.currentTarget.style.transform = 'scale(1)';
+            touchAction: 'manipulation',
           }}
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
 
-      {/* Navigation Arrows (Desktop) */}
+      {/* Navigation Arrows (Desktop only) */}
       <button
         onClick={handlePrev}
         type="button"
         aria-label="Vidéo précédente"
-        className="hide-mobile"
+        className="lightbox-nav-btn lightbox-prev"
         style={{
           position: 'absolute',
           left: 'max(1.5rem, env(safe-area-inset-left))',
@@ -220,14 +228,6 @@ export default function MotionLightbox({
           cursor: 'pointer',
           transition: 'all 0.2s',
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-          e.currentTarget.style.transform = 'translateY(-50%) scale(1.08)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
-          e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
-        }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="15 18 9 12 15 6"></polyline>
@@ -238,7 +238,7 @@ export default function MotionLightbox({
         onClick={handleNext}
         type="button"
         aria-label="Vidéo suivante"
-        className="hide-mobile"
+        className="lightbox-nav-btn lightbox-next"
         style={{
           position: 'absolute',
           right: 'max(1.5rem, env(safe-area-inset-right))',
@@ -257,31 +257,24 @@ export default function MotionLightbox({
           cursor: 'pointer',
           transition: 'all 0.2s',
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-          e.currentTarget.style.transform = 'translateY(-50%) scale(1.08)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
-          e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
-        }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </button>
 
-      {/* Main Video Frame */}
+      {/* Main Video Frame — Auto-fitted to any viewport */}
       <div
+        className="lightbox-video-frame"
         style={{
           position: 'relative',
-          maxHeight: 'calc(100svh - 6rem)',
-          maxWidth: 'calc((100svh - 6rem) * 9 / 16)',
+          maxHeight: 'calc(100svh - clamp(4.5rem, 12vh, 6rem))',
+          maxWidth: 'min(calc((100svh - clamp(4.5rem, 12vh, 6rem)) * 9 / 16), calc(100vw - 1.5rem))',
           width: '100%',
           aspectRatio: '9 / 16',
-          borderRadius: '16px',
+          borderRadius: 'clamp(12px, 3vw, 18px)',
           overflow: 'hidden',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.12)',
           background: '#000000',
           display: 'flex',
           alignItems: 'center',
@@ -309,11 +302,12 @@ export default function MotionLightbox({
       <div
         style={{
           position: 'absolute',
-          bottom: 'max(1.25rem, env(safe-area-inset-bottom))',
+          bottom: 'max(1rem, env(safe-area-inset-bottom))',
           left: 0,
           right: 0,
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
           gap: '0.5rem',
           pointerEvents: 'auto',
           zIndex: 10,
@@ -326,18 +320,42 @@ export default function MotionLightbox({
             onClick={() => onSelectIndex(i)}
             aria-label={`Aller à la vidéo ${v.title}`}
             style={{
-              width: i === currentIndex ? '28px' : '8px',
-              height: '8px',
-              borderRadius: '9999px',
+              background: 'transparent',
               border: 'none',
-              background: i === currentIndex ? 'var(--color-accent, #22c55e)' : 'rgba(255, 255, 255, 0.3)',
+              padding: '8px 4px',
               cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              padding: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
-          />
+          >
+            <span
+              style={{
+                display: 'block',
+                width: i === currentIndex ? '24px' : '8px',
+                height: '8px',
+                borderRadius: '9999px',
+                background: i === currentIndex ? 'var(--color-accent, #22c55e)' : 'rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease',
+              }}
+            />
+          </button>
         ))}
       </div>
+
+      <style>{`
+        @media (max-width: 1023px) {
+          .lightbox-nav-btn {
+            display: none !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .lightbox-nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            transform: translateY(-50%) scale(1.08) !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
