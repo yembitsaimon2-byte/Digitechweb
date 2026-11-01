@@ -2,16 +2,13 @@
 
 /**
  * DIGITECH WEB — GSAP initialization
- * Registre des plugins GSAP côté client uniquement.
+ * Registre des plugins GSAP côté client immédiatement à l'import.
  */
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-let initialized = false;
-
-export function initGSAP() {
-  if (initialized || typeof window === 'undefined') return;
+if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 
   // Configuration globale GSAP
@@ -25,7 +22,18 @@ export function initGSAP() {
     toggleActions: 'play none none none',
   });
 
-  initialized = true;
+  // Rafraîchissement après chargement des polices / ressources
+  if (typeof document !== 'undefined' && document.fonts) {
+    document.fonts.ready.then(() => {
+      ScrollTrigger.refresh();
+    });
+  }
+}
+
+export function initGSAP() {
+  if (typeof window === 'undefined') return;
+  ScrollTrigger.refresh();
 }
 
 export { gsap, ScrollTrigger };
+export default gsap;
